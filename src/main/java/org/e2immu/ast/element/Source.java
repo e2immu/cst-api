@@ -5,5 +5,4 @@ package org.e2immu.ast.element;
  */
 public interface Source extends Comparable<Source> {
 
-    Identifier identifier();
 }

@@ -1,19 +1,14 @@
 package org.e2immu.ast.runtime;
 
 import org.e2immu.ast.element.Comment;
-import org.e2immu.ast.element.Identifier;
 import org.e2immu.ast.expression.*;
-import org.e2immu.ast.expression.util.MultiExpression;
 import org.e2immu.ast.info.MethodInfo;
 import org.e2immu.ast.info.MethodModifier;
 import org.e2immu.ast.info.TypeInfo;
 import org.e2immu.ast.statement.*;
-import org.e2immu.ast.type.Diamond;
-import org.e2immu.ast.type.ParameterizedType;
-import org.e2immu.ast.type.TypeNature;
-import org.e2immu.ast.type.TypeParameter;
+import org.e2immu.ast.type.*;
 import org.e2immu.ast.variable.DependentVariable;
-import org.e2immu.ast.variable.LocalVariableReference;
+import org.e2immu.ast.variable.LocalVariable;
 import org.e2immu.ast.variable.Variable;
 
 import java.util.List;
@@ -22,80 +17,70 @@ public interface Factory {
 
     TypeNature typeNatureCLASS();
 
-    Assignment createAssignment(VariableExpression target, Expression value);
+    Assignment createAssignment(Expression target, Expression value);
 
-    Assignment createAssignment(Identifier identifier, Expression target, Expression value);
+    Equals newEquals(Expression lhs, Expression rhs);
 
+    InstanceOf newInstanceOf(ParameterizedType parameterizedType, Expression expression, LocalVariable patternVariable);
 
+    BinaryOperator newBinaryOperator(Expression lhs, MethodInfo operator, Expression rhs, Precedence precedence);
 
+    MethodCall newMethodCall(boolean b, Expression newObject, MethodInfo methodInfo, ParameterizedType parameterizedType, List<Expression> newParams);
 
-    Equals newEquals(Identifier constant, Expression lhs, Expression rhs);
+    ConstructorCall newObjectCreation(Expression scope, MethodInfo constructor, ParameterizedType parameterizedType, Diamond diamond, List<Expression> newParams);
 
-    InstanceOf newInstanceOf(Identifier identifier, ParameterizedType parameterizedType, Expression expression, LocalVariableReference patternVariable);
+    GreaterThanZero newGreaterThanZero(Expression e, boolean allowEquals);
 
-    BinaryOperator newBinaryOperator(Identifier identifier, Expression lhs, MethodInfo operator, Expression rhs, Precedence precedence);
+    Cast newCast(Expression e, ParameterizedType parameterizedType);
 
-    MethodCall newMethodCall(Identifier identifier, boolean b, Expression newObject, MethodInfo methodInfo, ParameterizedType parameterizedType, List<Expression> newParams);
+    MethodReference newMethodReference(Expression e, MethodInfo methodInfo, ParameterizedType parameterizedType);
 
-    ConstructorCall newObjectCreation(Identifier identifier, Expression scope, MethodInfo constructor, ParameterizedType parameterizedType, Diamond diamond, List<Expression> newParams);
+    UnaryOperator newUnaryOperator(MethodInfo operator, Expression e, Precedence precedence);
 
-    GreaterThanZero newGreaterThanZero(Identifier identifier, Expression e, boolean allowEquals);
+    ArrayLength newArrayLength(Expression e);
 
-    Assignment createAssignment(Expression target, Expression ee);
+    MethodCall newMethodCall(Expression object, MethodInfo takeWhile, List<Expression> parameterExpressions);
 
-    Cast newCast(Identifier identifier, Expression e, ParameterizedType parameterizedType);
+    TypeExpression newTypeExpression(ParameterizedType parameterizedType, Diamond diamond);
 
-    MethodReference newMethodReference(Identifier identifier, Expression e, MethodInfo methodInfo, ParameterizedType parameterizedType);
-
-    UnaryOperator newUnaryOperator(Identifier identifier, MethodInfo operator, Expression e, Precedence precedence);
-
-    ArrayLength newArrayLength(Identifier identifier, Expression e);
-
-    MethodCall newMethodCall(Identifier constant, Expression object, MethodInfo takeWhile, List<Expression> parameterExpressions);
-
-    TypeExpression newTypeExpression(Identifier constant, ParameterizedType parameterizedType, Diamond diamond);
-
-    ConstructorCall newConstructorCall(Identifier constant, Expression scope, MethodInfo constructor,
+    ConstructorCall newConstructorCall(Expression scope, MethodInfo constructor,
                                        ParameterizedType pt, Diamond diamond, List<Expression> parameterExpressions,
                                        TypeInfo anonymousClass, ArrayInitializer arrayInitializer);
 
-    IfElseStatement createIfElseStatement(Identifier identifier, String label, Expression condition, Block ifBlock, Block elseBlock, Comment comment);
+    IfElseStatement createIfElseStatement(String label, Expression condition, Block ifBlock, Block elseBlock, Comment comment);
 
-    ExpressionAsStatement createExpressionAsStatement(Identifier identifier, Expression standardized);
+    ExpressionAsStatement createExpressionAsStatement(Expression standardized);
 
-    ThrowStatement createThrowStatement(Identifier identifier, String label, Expression expression, Comment comment);
+    ThrowStatement createThrowStatement(String label, Expression expression, Comment comment);
 
-    AssertStatement createAssertStatement(Identifier identifier, String label, Expression check, Expression message);
+    AssertStatement createAssertStatement(String label, Expression check, Expression message);
 
-    ReturnStatement createReturnStatement(Identifier identifier, Expression expression);
+    ReturnStatement createReturnStatement(Expression expression);
 
-    WhileStatement createWhileStatement(Identifier constant, String label, Expression loopCondition, Block block, Comment comment);
+    WhileStatement createWhileStatement(String label, Expression loopCondition, Block block, Comment comment);
 
-    Block.BlockBuilder newBlockBuilder(Identifier identifier);
+    Block.Builder newBlockBuilder();
 
-    Block emptyBlock(Identifier identifier);
+    Block emptyBlock();
 
-    Assignment createAssignment(Identifier identifier, Expression target, Expression value,
+    Assignment createAssignment(Expression target, Expression value,
                                 MethodInfo assignmentOperator, Boolean prefixPrimitiveOperator,
                                 boolean complainAboutAssignmentOutsideType, boolean allowStaticallyAssigned,
                                 EvaluationResult evaluationOfValue);
 
-    VariableExpression newVariableExpression(Identifier identifier, Variable variable);
+    VariableExpression newVariableExpression(Variable variable);
 
     StringConstant newStringConstant(String string);
 
-    ConstructorCall objectCreation(Identifier constant, Expression scope, MethodInfo constructor, ParameterizedType parameterizedType, Diamond diamond, List<Expression> parameterExpressions);
-
+    ConstructorCall objectCreation(Expression scope, MethodInfo constructor, ParameterizedType parameterizedType, Diamond diamond, List<Expression> parameterExpressions);
 
     TypeInfo newTypeInfo(TypeInfo typeInfo, String capitalized);
-
-
 
     ParameterizedType newParameterizedType(TypeInfo typeInfo, List<ParameterizedType> newParameters);
 
     ParameterizedType newParameterizedType(TypeInfo typeInfo, int arrays);
 
-    ParameterizedType newParameterizedType(TypeParameter typeParameter, int index, ParameterizedType.WildCard wildCard);
+    ParameterizedType newParameterizedType(TypeParameter typeParameter, int index, Wildcard wildCard);
 
     TypeParameter newTypeParameter(String typeParameterName, int tpCnt);
 
@@ -107,7 +92,7 @@ public interface Factory {
 
     Diamond diamondNO();
 
-    Expression constructorCallWithArrayInitializer(MethodInfo constructor, ParameterizedType returnType, List<Object> of, ArrayInitializer initializer, Identifier constant);
+    Expression constructorCallWithArrayInitializer(MethodInfo constructor, ParameterizedType returnType, List<Object> of, ArrayInitializer initializer);
 
     MethodModifier methodModifierSTATIC();
 
@@ -116,31 +101,31 @@ public interface Factory {
 
     // make sure to use context.newAnd(..) when context available
     And createAnd(List<Expression> expressions);
+
     And createAnd(Expression... expressions);
 
     // make sure to use context.newOr(..) when context available
     Or createOr(List<Expression> expressions);
 
 
-    SwitchExpression newSwitchExpression(Identifier identifier, VariableExpression selector,
+    SwitchExpression newSwitchExpression(VariableExpression selector,
                                          List<SwitchEntry> switchEntries, ParameterizedType parameterizedType,
-                                         MultiExpression expressions);
+                                         List<Expression> expressions);
 
-    MultiExpression newMultiExpression();
-
-    SwitchEntry newStatementsSwitchEntry(Identifier identifier, VariableExpression selector,
+    SwitchEntry newStatementsSwitchEntry(VariableExpression selector,
                                          List<Expression> labels, List<Statement> statements);
 
-    MethodCall newMethodCall(Identifier identifier, boolean objectIsImplicit, Expression object,
+    MethodCall newMethodCall(boolean objectIsImplicit, Expression object,
                              MethodInfo methodInfo, ParameterizedType parameterizedType,
                              List<Expression> expressions, String modificationTimes);
-    CharConstant newCharConstant(Identifier identifier, char c);
+
+    CharConstant newCharConstant(char c);
 
 
-    Expression newVariableExpression(Identifier identifier, Variable variable,
+    Expression newVariableExpression(Variable variable,
                                      VariableExpression.Suffix suffix, Expression scope, Expression index);
 
-    DependentVariable createDependentVariable(Identifier identifier, Expression array, Expression index,
+    DependentVariable createDependentVariable(Expression array, Expression index,
                                               String statementIndex, TypeInfo owningType);
 
 }

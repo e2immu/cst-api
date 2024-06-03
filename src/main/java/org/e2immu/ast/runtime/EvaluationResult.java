@@ -1,10 +1,9 @@
 package org.e2immu.ast.runtime;
 
-import org.e2immu.ast.element.Identifier;
 import org.e2immu.ast.expression.Assignment;
 import org.e2immu.ast.expression.Expression;
 import org.e2immu.ast.info.TypeInfo;
-import org.e2immu.ast.variable.LocalVariableReference;
+import org.e2immu.ast.variable.LocalVariable;
 import org.e2immu.ast.variable.Variable;
 
 import java.util.List;
@@ -38,7 +37,7 @@ public interface EvaluationResult {
     //Sum.sum
     Expression sum(Expression lhs, Expression rhs);
 
-    EvaluationResult divide(Identifier constant, Expression lhs, Expression rhs);
+    EvaluationResult divide(Expression lhs, Expression rhs);
 
     Expression product(Expression lhs, Expression rhs);
 
@@ -49,7 +48,7 @@ public interface EvaluationResult {
     Assignment.E2 e2 = assignment.handleBinaryOperator(globalData.context(), EvaluationContextImpl.FWD, lvr, builder);
     return e2.assignedToTarget();
      */
-    Expression handleBinaryOperator(Assignment assignment, LocalVariableReference lvr);
+    Expression handleBinaryOperator(Assignment assignment, LocalVariable lv);
     /*
      static Stream<Expression> expandFactors(EvaluationResult evaluationContext, Expression expression) {
         if (expression instanceof Product product) {

@@ -9,20 +9,13 @@ public interface BooleanConstant extends Expression {
         return true;
     }
 
-    record Impl(boolean value) implements BooleanConstant {
-        @Override
-        public boolean isBoolValueTrue() {
-            return value;
-        }
+    @Override
+    default boolean isBoolValueFalse() {
+        return !constant();
+    }
 
-        @Override
-        public boolean isBoolValueFalse() {
-            return !value;
-        }
-
-        @Override
-        public boolean constant() {
-            return value;
-        }
+    @Override
+    default boolean isBoolValueTrue() {
+        return !constant();
     }
 }

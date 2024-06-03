@@ -12,7 +12,7 @@ public interface Predefined extends PredefinedWithoutParameterizedType {
 
     ParameterizedType voidParameterizedType();
 
-    MethodInfo assignOperator(ParameterizedType parameterizedType);
-
     ParameterizedType stringParameterizedType();
+
+    MethodInfo assignOperator(ParameterizedType parameterizedType);
 }

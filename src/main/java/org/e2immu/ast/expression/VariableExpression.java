@@ -1,28 +1,19 @@
 package org.e2immu.ast.expression;
 
-import org.e2immu.ast.element.Identifier;
 import org.e2immu.ast.variable.Variable;
 
 public interface VariableExpression extends Expression {
-    static VariableExpression create(Identifier constant, Variable variable) {
-        return new Impl(variable);
-    }
 
     Variable variable();
 
+    // FIXME move to e2immu implementation
+
     default boolean hasSuffix() {
-        return getSuffix() != null;
+        return suffix() != null;
     }
 
-    default Suffix getSuffix() {
+    default Suffix suffix() {
         return null;
-    }
-
-    record Impl(Variable variable) implements VariableExpression {
-        @Override
-        public Variable variable() {
-            return variable;
-        }
     }
 
     interface Suffix {

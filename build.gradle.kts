@@ -9,6 +9,17 @@ plugins {
     id("maven-publish")
 }
 
+repositories {
+    maven {
+        url = uri(project.findProperty("codeartifactUri") as String)
+        credentials {
+            username = "aws"
+            password = project.findProperty("codeartifactToken") as String
+        }
+    }
+    mavenCentral()
+}
+
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
@@ -16,59 +27,14 @@ java {
 }
 
 dependencies {
-    implementation(project(":support"))
+    implementation("org.e2immu:e2immu-support:0.6.4")
+    implementation("org.slf4j:slf4j-api:2.0.7")
 
-    implementation(libs.e2immuSupport)
-    implementation(libs.e2immuGraph)
-   // implementation(libs.e2immuAnalyser)
-  //  implementation(libs.e2immuAnalyserCli)
-  //  implementation(libs.e2immuAnalyserUtil)
-    implementation(libs.slf4jApi)
-    implementation(libs.jgraphtCore)
-    implementation(libs.jgraphtIO)
-    implementation(libs.logbackClassic)
-    implementation(libs.guava)
-    implementation(libs.javaParser)
-    implementation(libs.yaml)
-
-    testImplementation(libs.httpClient5)
-    testImplementation(libs.httpCore5)
-    testImplementation(libs.junitJupiterApi)
-    testRuntimeOnly(libs.junitJupiterEngine)
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.3")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.3")
+    testRuntimeOnly("ch.qos.logback:logback-classic:1.4.12")
 }
 
 tasks.test {
     useJUnitPlatform()
-
-    maxHeapSize ="2G"
-    exclude( "**/failing/*")
-    maxParallelForks = 8
 }
-
-publishing {
-    publications {
-        create<MavenPublication>("mavenJava") {
-            from(components["java"])
-
-            pom {
-                name = "JFocus Standardize"
-                description = "JFocul Standardize"
-                url = "https://codelaser.io"
-                licenses {
-                    license {
-                        name = "Commercial. Contact CodeLaser BV, Bazel, Belgium."
-                    }
-                }
-                developers {
-                    developer {
-                        id = "bnaudts"
-                        name = "Bart Naudts"
-                        email = "bart.naudts@codelaser.io"
-                    }
-                }
-            }
-        }
-    }
-}
-
-

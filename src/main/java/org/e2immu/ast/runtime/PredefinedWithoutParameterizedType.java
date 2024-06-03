@@ -1,13 +1,12 @@
 package org.e2immu.ast.runtime;
 
-import org.e2immu.ast.element.Identifier;
 import org.e2immu.ast.expression.*;
 import org.e2immu.ast.info.MethodInfo;
 import org.e2immu.ast.info.TypeInfo;
 
 public interface PredefinedWithoutParameterizedType {
 
-    Expression nullValue(Identifier constant, TypeInfo typeInfo);
+    Expression nullValue(TypeInfo typeInfo);
 
     TypeInfo boxed(TypeInfo typeInfo);
 
@@ -31,7 +30,7 @@ public interface PredefinedWithoutParameterizedType {
 
     TypeInfo objectTypeInfo();
 
-    Numeric intOrDouble(Identifier identifier, double v);
+    Numeric intOrDouble(double v);
 
     Expression nullConstant();
 
