@@ -9,6 +9,8 @@ plugins {
     id("maven-publish")
 }
 
+group = "org.e2immu"
+
 repositories {
     maven {
         url = uri(project.findProperty("codeartifactUri") as String)
