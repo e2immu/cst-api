@@ -3,6 +3,11 @@ package org.e2immu.cstapi.info;
 
 import org.e2immu.cstapi.type.NamedType;
 import org.e2immu.cstapi.type.ParameterizedType;
+import org.e2immu.cstapi.type.TypeParameter;
+import org.e2immu.support.Either;
+
+import java.util.Collection;
+import java.util.List;
 
 public interface TypeInfo extends NamedType {
 
@@ -25,4 +30,14 @@ public interface TypeInfo extends NamedType {
 
     // chain of type names Primary.Sub.Sub2
     String fromPrimaryTypeDownwards();
+
+    Either<String, TypeInfo> packageNameOrEnclosingType();
+
+
+
+    // from inspection
+
+    List<TypeParameter> typeParameters();
+
+    boolean isStatic();
 }

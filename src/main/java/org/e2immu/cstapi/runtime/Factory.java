@@ -162,4 +162,6 @@ public interface Factory {
     Expression remainder(Expression lhs, Expression rhs);
 
     Expression equals(Expression lhs, Expression rhs);
+
+    ParameterizedType commonType(ParameterizedType pt1, ParameterizedType pt2);
 }
