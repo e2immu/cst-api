@@ -1,7 +1,7 @@
 package org.e2immu.cstapi.expression;
 
 public interface Numeric extends Expression {
-    Number getNumber();
+    Number number();
 
     double doubleValue();
 

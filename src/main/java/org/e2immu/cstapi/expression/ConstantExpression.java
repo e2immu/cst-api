@@ -3,7 +3,6 @@ package org.e2immu.cstapi.expression;
 import org.e2immu.cstapi.runtime.Predefined;
 
 public interface ConstantExpression<T> extends Expression {
-    Predefined primitives();
 
     @Override
     default boolean isConstant() {

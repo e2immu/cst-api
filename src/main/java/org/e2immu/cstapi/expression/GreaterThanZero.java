@@ -1,13 +1,13 @@
 package org.e2immu.cstapi.expression;
 
-import org.e2immu.cstapi.runtime.EvaluationResult;
+import org.e2immu.cstapi.runtime.Runtime;
 
 public interface GreaterThanZero extends Expression {
     Expression expression();
 
     boolean allowEquals();
 
-    XB extract(EvaluationResult e);
+    XB extract(Runtime runtime);
 
     interface XB {
         Expression x();

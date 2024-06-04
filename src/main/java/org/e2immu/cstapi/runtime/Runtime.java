@@ -4,4 +4,5 @@ public interface Runtime extends Predefined, Factory {
 
     Configuration configuration();
 
+    int limitOnComplexity();
 }

@@ -25,11 +25,12 @@ public interface MethodInfo {
 
     boolean hasReturnValue();
 
+
+
     enum MethodType {
-        METHOD, CONSTRUCTOR, STATIC_METHOD,
+        METHOD, CONSTRUCTOR, STATIC_METHOD;
     }
     String name();
-
     String distinguishingName();
 
     String fullyQualifiedName();
@@ -41,11 +42,15 @@ public interface MethodInfo {
     ParameterizedType returnType();
 
     Source newLocation();
-    
+
     Set<MethodInfo> topOfOverloadingHierarchy();
 
     // from inspection
+
     List<ParameterInfo> parameters();
+
+    // from resolution
+    boolean isOverloadOf(MethodInfo methodInfo);
 
     // with inspection
     boolean isOverloadOfJLOEquals();

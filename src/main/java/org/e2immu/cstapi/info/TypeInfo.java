@@ -17,4 +17,12 @@ public interface TypeInfo extends NamedType {
     FieldInfo getFieldByName(String name, boolean complain);
 
     MethodInfo findUniqueMethod(String tryCatch, TypeInfo typeInfoOfFirstParameter);
+
+    // for java, that will be packageName == "java.lang"
+    boolean doesNotRequirePackage();
+
+    boolean isPrimaryType();
+
+    // chain of type names Primary.Sub.Sub2
+    String fromPrimaryTypeDownwards();
 }

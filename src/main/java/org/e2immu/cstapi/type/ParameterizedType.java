@@ -80,4 +80,6 @@ public interface ParameterizedType {
 
     // TODO consider moving this to "runtime"
     boolean isAssignableFrom(Runtime runtime, ParameterizedType other);
+
+    String detailedString();
 }

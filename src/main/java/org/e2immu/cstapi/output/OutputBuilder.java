@@ -16,4 +16,8 @@ public interface OutputBuilder {
     OutputBuilder add(OutputBuilder... outputBuilders);
 
     List<OutputElement> list();
+
+    boolean isEmpty();
+
+    boolean notStart();
 }

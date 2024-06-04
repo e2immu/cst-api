@@ -67,7 +67,7 @@ public interface Factory {
     Assignment createAssignment(Expression target, Expression value,
                                 MethodInfo assignmentOperator, Boolean prefixPrimitiveOperator,
                                 boolean complainAboutAssignmentOutsideType, boolean allowStaticallyAssigned,
-                                EvaluationResult evaluationOfValue);
+                                Expression evaluationOfValue);
 
     VariableExpression newVariableExpression(Variable variable);
 
@@ -101,9 +101,12 @@ public interface Factory {
 
 
     // make sure to use context.newAnd(..) when context available
-    And createAnd(List<Expression> expressions);
+    Expression newOr(List<Expression> expressions);
+    Expression newOr(Expression... expressions);
+    Expression newAnd(Expression... expressions);
 
-    And createAnd(Expression... expressions);
+    Expression newAnd(List<Expression> expressions);
+    Expression newAnd(boolean allowEqualsToEvaluate, List<Expression> expressions);
 
     // make sure to use context.newOr(..) when context available
     Or createOr(List<Expression> expressions);
@@ -125,9 +128,6 @@ public interface Factory {
     CharConstant newCharConstant(char c);
 
     This newThis(TypeInfo typeInfo);
-
-    Expression newVariableExpression(Variable variable,
-                                     VariableExpression.Suffix suffix, Expression scope, Expression index);
 
     DependentVariable createDependentVariable(Expression array, Expression index,
                                               String statementIndex, TypeInfo owningType);
@@ -152,4 +152,14 @@ public interface Factory {
 
 
     Instance newInstanceForTooComplex(ParameterizedType parameterizedType);
+
+    Expression sum(Expression lhs, Expression rhs);
+
+    Expression negate(Expression expression);
+
+    Expression negate(Expression expression, boolean allowEqualsToEvaluate);
+
+    Expression remainder(Expression lhs, Expression rhs);
+
+    Expression equals(Expression lhs, Expression rhs);
 }
