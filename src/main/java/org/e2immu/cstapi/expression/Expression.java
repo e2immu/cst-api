@@ -7,6 +7,14 @@ public interface Expression extends Comparable<Expression>, Element {
 
     ParameterizedType parameterizedType();
 
+    Precedence precedence();
+
+    // "external": helps to compare expressions of different types
+    int order();
+
+    // "internal" as: how do two expressions of the same type compare to each other?
+    int internalCompareTo(Expression expression);
+
     // convenience methods
 
     default boolean isBoolValueTrue() {
@@ -37,7 +45,11 @@ public interface Expression extends Comparable<Expression>, Element {
         return false;
     }
 
-   default boolean isNumeric() {
+    default boolean isNumeric() {
         return false;
-   }
+    }
+
+    default Expression conditionOfInlineConditional() {
+        return null;
+    }
 }

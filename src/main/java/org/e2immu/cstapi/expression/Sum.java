@@ -22,4 +22,6 @@ public interface Sum extends BinaryOperator {
         }
         return Stream.of(expression);
     }
+
+    Expression isZero(EvaluationResult evaluationResult);
 }

@@ -20,6 +20,7 @@ public interface EvaluationResult {
 
         Builder setExpression(Expression expression);
     }
+
     Builder newBuilder();
 
     Expression expression();
@@ -28,7 +29,11 @@ public interface EvaluationResult {
 
     TypeInfo getCurrentType();
 
-    Expression negate(Expression expression);
+    default Expression negate(Expression expression) {
+        return negate(expression, true);
+    }
+
+    Expression negate(Expression expression, boolean allowEqualsToCallContext);
 
     Expression newOr(List<Expression> list);
 
@@ -49,6 +54,7 @@ public interface EvaluationResult {
 
     //Sum.sum
     Expression sum(Expression lhs, Expression rhs);
+
     Expression remainder(Expression lhs, Expression rhs);
 
     EvaluationResult divide(Expression lhs, Expression rhs);
@@ -63,6 +69,7 @@ public interface EvaluationResult {
     return e2.assignedToTarget();
      */
     Expression handleBinaryOperator(Assignment assignment, LocalVariable lv);
+
     /*
      static Stream<Expression> expandFactors(EvaluationResult evaluationContext, Expression expression) {
         if (expression instanceof Product product) {

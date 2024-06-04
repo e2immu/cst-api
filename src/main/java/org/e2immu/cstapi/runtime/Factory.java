@@ -9,6 +9,7 @@ import org.e2immu.cstapi.statement.*;
 import org.e2immu.cstapi.type.*;
 import org.e2immu.cstapi.variable.DependentVariable;
 import org.e2immu.cstapi.variable.LocalVariable;
+import org.e2immu.cstapi.variable.This;
 import org.e2immu.cstapi.variable.Variable;
 
 import java.util.List;
@@ -123,12 +124,15 @@ public interface Factory {
 
     CharConstant newCharConstant(char c);
 
+    This newThis(TypeInfo typeInfo);
 
     Expression newVariableExpression(Variable variable,
                                      VariableExpression.Suffix suffix, Expression scope, Expression index);
 
     DependentVariable createDependentVariable(Expression array, Expression index,
                                               String statementIndex, TypeInfo owningType);
+
+    Expression newMultiExpressions(List<Expression> newExpressions);
 
     BooleanConstant newBooleanConstant(boolean value);
 
@@ -141,4 +145,11 @@ public interface Factory {
     }
 
     IntConstant zero();
+
+    IntConstant one();
+
+    IntConstant minusOne();
+
+
+    Instance newInstanceForTooComplex(ParameterizedType parameterizedType);
 }

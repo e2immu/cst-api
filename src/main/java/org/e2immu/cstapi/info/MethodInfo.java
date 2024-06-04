@@ -3,6 +3,7 @@ package org.e2immu.cstapi.info;
 import org.e2immu.cstapi.element.Source;
 import org.e2immu.cstapi.type.ParameterizedType;
 
+import java.util.List;
 import java.util.Set;
 
 public interface MethodInfo {
@@ -43,8 +44,13 @@ public interface MethodInfo {
     
     Set<MethodInfo> topOfOverloadingHierarchy();
 
+    // from inspection
+    List<ParameterInfo> parameters();
 
-    boolean isModifying();
+    // with inspection
     boolean isOverloadOfJLOEquals();
+
+    // from analysis
+    boolean isModifying();
 }
 

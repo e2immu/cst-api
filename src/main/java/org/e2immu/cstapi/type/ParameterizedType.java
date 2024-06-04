@@ -5,6 +5,7 @@ import org.e2immu.cstapi.info.TypeInfo;
 import org.e2immu.cstapi.output.OutputBuilder;
 import org.e2immu.cstapi.output.Qualification;
 import org.e2immu.cstapi.runtime.PredefinedWithoutParameterizedType;
+import org.e2immu.cstapi.runtime.Runtime;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -76,4 +77,7 @@ public interface ParameterizedType {
     boolean isNumeric();
 
     boolean isUnboundTypeParameter();
+
+    // TODO consider moving this to "runtime"
+    boolean isAssignableFrom(Runtime runtime, ParameterizedType other);
 }
