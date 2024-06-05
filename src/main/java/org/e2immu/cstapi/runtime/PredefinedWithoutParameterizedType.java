@@ -7,8 +7,6 @@ import org.e2immu.cstapi.type.ParameterizedType;
 
 public interface PredefinedWithoutParameterizedType {
 
-    Expression nullValue(TypeInfo typeInfo);
-
     TypeInfo boxed(TypeInfo typeInfo);
 
     MethodInfo equalsOperatorObject();
@@ -31,12 +29,6 @@ public interface PredefinedWithoutParameterizedType {
 
     TypeInfo objectTypeInfo();
 
-    Numeric intOrDouble(double v);
-
-    Expression nullConstant();
-
-    BooleanConstant newBooleanConstant(boolean b);
-
     MethodInfo plusOperatorInt();
 
     MethodInfo multiplyOperatorInt();
@@ -56,19 +48,8 @@ public interface PredefinedWithoutParameterizedType {
 
     TypeInfo stringTypeInfo();
 
-    Precedence precedenceAND();
-
-    Precedence precedenceOR();
-
-    Precedence precedenceASSIGNMENT();
-
-    Precedence precedenceMULTIPLICATIVE();
-
-    Precedence precedenceADDITIVE();
-
     TypeInfo unboxed(TypeInfo typeInfo);
 
-    IntConstant newIntConstant(int i);
 
     TypeInfo booleanTypeInfo();
 

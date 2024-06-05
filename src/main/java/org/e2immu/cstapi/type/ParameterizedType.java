@@ -1,9 +1,11 @@
 package org.e2immu.cstapi.type;
 
 import org.e2immu.cstapi.element.Element;
+import org.e2immu.cstapi.expression.Expression;
 import org.e2immu.cstapi.info.TypeInfo;
 import org.e2immu.cstapi.output.OutputBuilder;
 import org.e2immu.cstapi.output.Qualification;
+import org.e2immu.cstapi.runtime.Predefined;
 import org.e2immu.cstapi.runtime.PredefinedWithoutParameterizedType;
 import org.e2immu.cstapi.runtime.Runtime;
 

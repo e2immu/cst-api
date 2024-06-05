@@ -1,8 +1,6 @@
 package org.e2immu.cstapi.expression;
 
-public interface BooleanConstant extends Expression {
-
-    boolean constant();
+public interface BooleanConstant extends ConstantExpression<Boolean> {
 
     BooleanConstant negate();
 

@@ -150,4 +150,24 @@ public interface Factory {
     Precedence precedenceUNARY();
 
     Precedence precedenceEQUALITY();
+
+
+    Expression nullValue(TypeInfo typeInfo);
+
+    Precedence precedenceAND();
+
+    Precedence precedenceOR();
+
+    Precedence precedenceASSIGNMENT();
+
+    Precedence precedenceMULTIPLICATIVE();
+
+    Precedence precedenceADDITIVE();
+
+    IntConstant newIntConstant(int i);
+
+    Numeric intOrDouble(double v);
+
+    Expression nullConstant();
+
 }
