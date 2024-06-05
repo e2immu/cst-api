@@ -70,6 +70,7 @@ public interface ParameterizedType {
     boolean isJavaLangObject();
 
     boolean isFunctionalInterface();
+
     boolean isBoxedExcludingVoid();
 
     boolean isWILDCARD_PARAMETERIZED_TYPE();
@@ -82,4 +83,8 @@ public interface ParameterizedType {
     boolean isAssignableFrom(Runtime runtime, ParameterizedType other);
 
     String detailedString();
+
+    default boolean isType() {
+        return typeInfo() != null;
+    }
 }

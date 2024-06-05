@@ -15,6 +15,23 @@ public interface TypeInfo extends NamedType {
 
     ParameterizedType asSimpleParameterizedType();
 
+    // for java, that will be packageName == "java.lang"
+    boolean doesNotRequirePackage();
+
+    default boolean isPrimaryType() {
+        return packageNameOrEnclosingType().isLeft();
+    }
+
+    // chain of type names Primary.Sub.Sub2
+    String fromPrimaryTypeDownwards();
+
+    Either<String, TypeInfo> packageNameOrEnclosingType();
+
+
+    // from inspection
+
+    List<TypeParameter> typeParameters();
+
     MethodInfo findUniqueMethod(String methodName, int n);
 
     MethodInfo findConstructor(int i);
@@ -23,21 +40,7 @@ public interface TypeInfo extends NamedType {
 
     MethodInfo findUniqueMethod(String tryCatch, TypeInfo typeInfoOfFirstParameter);
 
-    // for java, that will be packageName == "java.lang"
-    boolean doesNotRequirePackage();
-
-    boolean isPrimaryType();
-
-    // chain of type names Primary.Sub.Sub2
-    String fromPrimaryTypeDownwards();
-
-    Either<String, TypeInfo> packageNameOrEnclosingType();
-
-
-
-    // from inspection
-
-    List<TypeParameter> typeParameters();
-
     boolean isStatic();
+
+    TypeInfo primaryType();
 }

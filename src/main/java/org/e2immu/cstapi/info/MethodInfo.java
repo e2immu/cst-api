@@ -1,17 +1,16 @@
 package org.e2immu.cstapi.info;
 
+import org.e2immu.cstapi.element.Element;
 import org.e2immu.cstapi.element.Source;
 import org.e2immu.cstapi.type.ParameterizedType;
 
 import java.util.List;
 import java.util.Set;
 
-public interface MethodInfo {
+public interface MethodInfo extends Element {
     boolean isConstructor();
 
     TypeInfo primaryType();
-
-    TypeInfo getTypeInfo();
 
     boolean methodAnalysisIsSet();
 
@@ -19,20 +18,23 @@ public interface MethodInfo {
 
     boolean isVoid();
 
-    boolean getComplexity();
+    int complexity();
 
     boolean complexityGreaterThanCOMPLEXITY_METHOD_WITHOUT_CODE();
 
-    boolean hasReturnValue();
+    default boolean hasReturnValue() {
+        return !isVoid() && !isConstructor();
+    }
 
     boolean isPostfix();
+
     boolean isInfix();
 
     enum MethodType {
         METHOD, CONSTRUCTOR, STATIC_METHOD;
     }
+
     String name();
-    String distinguishingName();
 
     String fullyQualifiedName();
 
@@ -41,8 +43,6 @@ public interface MethodInfo {
     boolean isStatic();
 
     ParameterizedType returnType();
-
-    Source newLocation();
 
     Set<MethodInfo> topOfOverloadingHierarchy();
 
@@ -58,5 +58,11 @@ public interface MethodInfo {
 
     // from analysis
     boolean isModifying();
+
+    boolean isCompactConstructor();
+
+    boolean isSyntheticConstructor();
+
+    boolean isStaticBlock();
 }
 

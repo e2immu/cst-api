@@ -26,7 +26,7 @@ public interface Eval {
     Expression and(Expression... expressions);
 
     Expression and(List<Expression> expressions);
-    
+
     boolean isNotNull0(Expression expression);
 
     int limitOnComplexity();

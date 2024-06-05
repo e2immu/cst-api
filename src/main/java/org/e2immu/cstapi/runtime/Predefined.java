@@ -1,6 +1,8 @@
 package org.e2immu.cstapi.runtime;
 
+import org.e2immu.cstapi.expression.AnnotationExpression;
 import org.e2immu.cstapi.info.MethodInfo;
+import org.e2immu.cstapi.info.TypeInfo;
 import org.e2immu.cstapi.type.ParameterizedType;
 
 public interface Predefined extends PredefinedWithoutParameterizedType {
@@ -8,17 +10,25 @@ public interface Predefined extends PredefinedWithoutParameterizedType {
 
     ParameterizedType booleanParameterizedType();
 
-    ParameterizedType objectParameterizedType();
+    ParameterizedType boxedBooleanParameterizedType();
 
-    ParameterizedType voidParameterizedType();
+    ParameterizedType longParameterizedType();
 
-    ParameterizedType stringParameterizedType();
+    ParameterizedType doubleParameterizedType();
 
-    MethodInfo assignOperator(ParameterizedType parameterizedType);
+    ParameterizedType floatParameterizedType();
 
-    MethodInfo unaryMinusOperatorInt();
+    ParameterizedType shortParameterizedType();
 
-    MethodInfo logicalNotOperatorBool();
+    ParameterizedType charParameterizedType();
 
-    MethodInfo productOperatorInt();
+    ParameterizedType widestType(ParameterizedType t1, ParameterizedType t2);
+
+    /*
+    used by binaryOperator, the result cannot be null, so must be the unboxed version (this contrasts with
+    ParameterizedType.commonType)
+     */
+    ParameterizedType widestTypeUnbox(ParameterizedType t1, ParameterizedType t2);
+
+
 }
