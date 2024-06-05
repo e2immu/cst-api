@@ -143,10 +143,11 @@ public interface Factory {
 
     IntConstant minusOne();
 
-
     Instance newInstanceForTooComplex(ParameterizedType parameterizedType);
 
     ParameterizedType commonType(ParameterizedType pt1, ParameterizedType pt2);
 
     Precedence precedenceUNARY();
+
+    Precedence precedenceEQUALITY();
 }

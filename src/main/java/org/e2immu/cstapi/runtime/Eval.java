@@ -12,26 +12,22 @@ public interface Eval {
 
     Expression negate(Expression expression);
 
-    Expression negate(Expression expression, boolean allowEqualsToEvaluate);
-
     Expression remainder(Expression lhs, Expression rhs);
 
     Expression equals(Expression lhs, Expression rhs);
 
-    Expression equals(boolean allowEqualsToEvaluate, Expression lhs, Expression rhs);
 
-    // FIXME rename
+    Expression greater(Expression lhs, Expression rhs, boolean allowEquals);
 
-    Expression newOr(List<Expression> expressions);
+    Expression or(List<Expression> expressions);
 
-    Expression newOr(Expression... expressions);
+    Expression or(Expression... expressions);
 
-    Expression newAnd(Expression... expressions);
+    Expression and(Expression... expressions);
 
-    Expression newAnd(List<Expression> expressions);
+    Expression and(List<Expression> expressions);
+    
+    boolean isNotNull0(Expression expression);
 
-    Expression newAnd(boolean allowEqualsToEvaluate, List<Expression> expressions);
-
-    Expression newOr(boolean allowEqualsToEvaluate, Expression... expressions);
-
+    int limitOnComplexity();
 }

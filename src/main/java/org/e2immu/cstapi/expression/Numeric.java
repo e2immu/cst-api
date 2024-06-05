@@ -5,6 +5,8 @@ public interface Numeric extends Expression {
 
     double doubleValue();
 
+    Expression negate();
+
     @Override
     default boolean isNegatedOrNumericNegative() {
         return doubleValue() < 0;

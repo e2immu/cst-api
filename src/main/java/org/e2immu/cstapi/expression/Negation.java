@@ -1,6 +1,6 @@
 package org.e2immu.cstapi.expression;
 
-public interface Negation extends Expression, Negatable {
+public interface Negation extends Expression {
 
     Expression expression();
 
