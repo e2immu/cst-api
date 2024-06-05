@@ -151,6 +151,7 @@ public interface Factory {
 
     Precedence precedenceEQUALITY();
 
+    Precedence precedenceGREATERTHAN();
 
     Expression nullValue(TypeInfo typeInfo);
 
@@ -166,8 +167,19 @@ public interface Factory {
 
     IntConstant newIntConstant(int i);
 
+    LongConstant newLongConstant(long l);
+
+    ShortConstant newShortConstant(short s);
+
+    ByteConstant newByteConstant(byte b);
+
+    FloatConstant newFloatConstant(float f);
+
+    DoubleConstant newDoubleConstant(double d);
+
     Numeric intOrDouble(double v);
 
     Expression nullConstant();
 
+    LocalVariable newLocalVariable(String name, ParameterizedType parameterizedType);
 }

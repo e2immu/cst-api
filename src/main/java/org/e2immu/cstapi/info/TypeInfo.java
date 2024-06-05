@@ -22,6 +22,8 @@ public interface TypeInfo extends NamedType {
         return packageNameOrEnclosingType().isLeft();
     }
 
+    String packageName();
+
     // chain of type names Primary.Sub.Sub2
     String fromPrimaryTypeDownwards();
 
@@ -43,4 +45,20 @@ public interface TypeInfo extends NamedType {
     boolean isStatic();
 
     TypeInfo primaryType();
+
+    boolean isBoolean();
+
+    boolean isInt();
+
+    boolean isLong();
+
+    boolean isShort();
+
+    boolean isByte();
+
+    boolean isFloat();
+
+    boolean isDouble();
+
+    boolean isChar();
 }
