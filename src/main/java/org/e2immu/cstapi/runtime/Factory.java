@@ -18,7 +18,7 @@ public interface Factory {
 
     TypeNature typeNatureCLASS();
 
-    Assignment createAssignment(Expression target, Expression value);
+    Assignment newAssignment(Expression target, Expression value);
 
     Equals newEquals(Expression lhs, Expression rhs);
 
@@ -48,26 +48,26 @@ public interface Factory {
                                        ParameterizedType pt, Diamond diamond, List<Expression> parameterExpressions,
                                        TypeInfo anonymousClass, ArrayInitializer arrayInitializer);
 
-    IfElseStatement createIfElseStatement(String label, Expression condition, Block ifBlock, Block elseBlock, Comment comment);
+    IfElseStatement newIfElseStatement(String label, Expression condition, Block ifBlock, Block elseBlock, Comment comment);
 
-    ExpressionAsStatement createExpressionAsStatement(Expression standardized);
+    ExpressionAsStatement newExpressionAsStatement(Expression standardized);
 
-    ThrowStatement createThrowStatement(String label, Expression expression, Comment comment);
+    ThrowStatement newThrowStatement(String label, Expression expression, Comment comment);
 
-    AssertStatement createAssertStatement(String label, Expression check, Expression message);
+    AssertStatement newAssertStatement(String label, Expression check, Expression message);
 
-    ReturnStatement createReturnStatement(Expression expression);
+    ReturnStatement newReturnStatement(Expression expression);
 
-    WhileStatement createWhileStatement(String label, Expression loopCondition, Block block, Comment comment);
+    WhileStatement newWhileStatement(String label, Expression loopCondition, Block block, Comment comment);
 
     Block.Builder newBlockBuilder();
 
     Block emptyBlock();
 
-    Assignment createAssignment(Expression target, Expression value,
-                                MethodInfo assignmentOperator, Boolean prefixPrimitiveOperator,
-                                boolean complainAboutAssignmentOutsideType, boolean allowStaticallyAssigned,
-                                Expression evaluationOfValue);
+    Assignment newAssignment(Expression target, Expression value,
+                             MethodInfo assignmentOperator, Boolean prefixPrimitiveOperator,
+                             boolean complainAboutAssignmentOutsideType, boolean allowStaticallyAssigned,
+                             Expression evaluationOfValue);
 
     VariableExpression newVariableExpression(Variable variable);
 
@@ -103,7 +103,7 @@ public interface Factory {
     // make sure to use context.newAnd(..) when context available
 
     // make sure to use context.newOr(..) when context available
-    Or createOr(List<Expression> expressions);
+    Or newOr(List<Expression> expressions);
 
     InlineConditional newInlineConditional(Expression condition, Expression ifTrue, Expression ifFalse);
 
@@ -122,8 +122,8 @@ public interface Factory {
 
     This newThis(TypeInfo typeInfo);
 
-    DependentVariable createDependentVariable(Expression array, Expression index,
-                                              String statementIndex, TypeInfo owningType);
+    DependentVariable newDependentVariable(Expression array, Expression index,
+                                           String statementIndex, TypeInfo owningType);
 
     Expression newMultiExpressions(List<Expression> newExpressions);
 
@@ -165,17 +165,17 @@ public interface Factory {
 
     Precedence precedenceADDITIVE();
 
-    IntConstant newIntConstant(int i);
+    IntConstant newInt(int i);
 
-    LongConstant newLongConstant(long l);
+    LongConstant newLong(long l);
 
-    ShortConstant newShortConstant(short s);
+    ShortConstant newShort(short s);
 
-    ByteConstant newByteConstant(byte b);
+    ByteConstant newByte(byte b);
 
-    FloatConstant newFloatConstant(float f);
+    FloatConstant newFloat(float f);
 
-    DoubleConstant newDoubleConstant(double d);
+    DoubleConstant newDouble(double d);
 
     Numeric intOrDouble(double v);
 
