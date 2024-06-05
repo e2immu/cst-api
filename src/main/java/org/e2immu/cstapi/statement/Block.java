@@ -1,6 +1,7 @@
 package org.e2immu.cstapi.statement;
 
 import org.e2immu.annotation.Fluent;
+import org.e2immu.cstapi.element.Element;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -8,7 +9,7 @@ import java.util.stream.Stream;
 public interface Block extends Statement {
     List<Statement> statements();
 
-    interface Builder {
+    interface Builder extends Statement.Builder {
 
         Block build();
 

@@ -1,8 +1,10 @@
 package org.e2immu.cstapi.element;
 
+import org.e2immu.annotation.Fluent;
 import org.e2immu.annotation.ImmutableContainer;
 import org.e2immu.annotation.NotNull;
 import org.e2immu.annotation.rare.IgnoreModifications;
+import org.e2immu.cstapi.expression.AnnotationExpression;
 import org.e2immu.cstapi.info.TypeInfo;
 import org.e2immu.cstapi.output.OutputBuilder;
 import org.e2immu.cstapi.output.Qualification;
@@ -98,4 +100,22 @@ public interface Element {
 
     @NotNull
     Stream<TypeReference> typesReferenced();
+
+
+    interface Builder {
+        @Fluent
+        Builder setSource(Source source);
+
+        @Fluent
+        Builder addComment(Comment comment);
+
+        @Fluent
+        Builder addComments(List<Comment> comments);
+
+        @Fluent
+        Builder addAnnotation(AnnotationExpression annotation);
+
+        @Fluent
+        Builder addAnnotations(List<AnnotationExpression> annotations);
+    }
 }

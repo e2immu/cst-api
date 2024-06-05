@@ -1,5 +1,6 @@
 package org.e2immu.cstapi.statement;
 
+import org.e2immu.annotation.Fluent;
 import org.e2immu.annotation.NotNull;
 import org.e2immu.cstapi.element.Element;
 import org.e2immu.cstapi.expression.AnnotationExpression;
@@ -36,5 +37,10 @@ public interface Statement extends Element {
     @NotNull
     default Stream<Block> subBlockStream() {
         return Stream.concat(Stream.ofNullable(block()), otherBlocks().stream());
+    }
+
+    interface Builder extends Element.Builder {
+        @Fluent
+        Builder setLabel(String label);
     }
 }

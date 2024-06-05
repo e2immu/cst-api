@@ -1,6 +1,7 @@
 package org.e2immu.cstapi.runtime;
 
 import org.e2immu.cstapi.element.Comment;
+import org.e2immu.cstapi.element.Element;
 import org.e2immu.cstapi.expression.*;
 import org.e2immu.cstapi.info.MethodInfo;
 import org.e2immu.cstapi.info.MethodModifier;
@@ -38,6 +39,8 @@ public interface Factory {
 
     UnaryOperator newUnaryOperator(MethodInfo operator, Expression e, Precedence precedence);
 
+    ArrayInitializer newArrayInitializer(List<Expression> expressions, ParameterizedType commonType);
+
     ArrayLength newArrayLength(Expression e);
 
     MethodCall newMethodCall(Expression object, MethodInfo takeWhile, List<Expression> parameterExpressions);
@@ -57,6 +60,8 @@ public interface Factory {
     AssertStatement newAssertStatement(String label, Expression check, Expression message);
 
     ReturnStatement newReturnStatement(Expression expression);
+
+    Element.Builder newReturnStatementBuilder();
 
     WhileStatement newWhileStatement(String label, Expression loopCondition, Block block, Comment comment);
 
