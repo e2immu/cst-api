@@ -15,4 +15,10 @@ public interface Predefined extends PredefinedWithoutParameterizedType {
     ParameterizedType stringParameterizedType();
 
     MethodInfo assignOperator(ParameterizedType parameterizedType);
+
+    MethodInfo unaryMinusOperatorInt();
+
+    MethodInfo logicalNotOperatorBool();
+
+    MethodInfo productOperatorInt();
 }

@@ -101,18 +101,11 @@ public interface Factory {
 
 
     // make sure to use context.newAnd(..) when context available
-    Expression newOr(List<Expression> expressions);
-    Expression newOr(Expression... expressions);
-    Expression newAnd(Expression... expressions);
-
-    Expression newAnd(List<Expression> expressions);
-    Expression newAnd(boolean allowEqualsToEvaluate, List<Expression> expressions);
 
     // make sure to use context.newOr(..) when context available
     Or createOr(List<Expression> expressions);
 
     InlineConditional newInlineConditional(Expression condition, Expression ifTrue, Expression ifFalse);
-
 
     SwitchExpression newSwitchExpression(VariableExpression selector,
                                          List<SwitchEntry> switchEntries, ParameterizedType parameterizedType,
@@ -153,15 +146,7 @@ public interface Factory {
 
     Instance newInstanceForTooComplex(ParameterizedType parameterizedType);
 
-    Expression sum(Expression lhs, Expression rhs);
-
-    Expression negate(Expression expression);
-
-    Expression negate(Expression expression, boolean allowEqualsToEvaluate);
-
-    Expression remainder(Expression lhs, Expression rhs);
-
-    Expression equals(Expression lhs, Expression rhs);
-
     ParameterizedType commonType(ParameterizedType pt1, ParameterizedType pt2);
+
+    Precedence precedenceUNARY();
 }

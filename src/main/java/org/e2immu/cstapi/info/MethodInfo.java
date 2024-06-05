@@ -25,7 +25,8 @@ public interface MethodInfo {
 
     boolean hasReturnValue();
 
-
+    boolean isPostfix();
+    boolean isInfix();
 
     enum MethodType {
         METHOD, CONSTRUCTOR, STATIC_METHOD;

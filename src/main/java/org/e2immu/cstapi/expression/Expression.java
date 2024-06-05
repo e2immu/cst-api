@@ -45,6 +45,9 @@ public interface Expression extends Comparable<Expression>, Element {
         return false;
     }
 
+    default Double numericValue() {
+        return null;
+    }
     default boolean isNumeric() {
         return false;
     }

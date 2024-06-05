@@ -14,4 +14,9 @@ public interface Numeric extends Expression {
     default boolean isNumeric() {
         return true;
     }
+
+    @Override
+    default Double numericValue() {
+        return doubleValue();
+    }
 }

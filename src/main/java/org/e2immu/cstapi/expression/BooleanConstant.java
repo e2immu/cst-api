@@ -4,6 +4,8 @@ public interface BooleanConstant extends Expression {
 
     boolean constant();
 
+    BooleanConstant negate();
+
     @Override
     default boolean isBooleanConstant() {
         return true;
