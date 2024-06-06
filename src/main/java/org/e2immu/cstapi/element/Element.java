@@ -117,6 +117,10 @@ public interface Element {
         Builder addAnnotations(List<AnnotationExpression> annotations);
     }
 
+    default <V extends Value> V analysed(Property property, Class<V> clazz) {
+        throw new UnsupportedOperationException();
+    }
+
     default Value analysed(Property property) {
         throw new UnsupportedOperationException();
     }

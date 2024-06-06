@@ -70,6 +70,11 @@ public interface Factory {
 
     Block emptyBlock();
 
+    Lambda newLambda(ParameterizedType abstractFunctionalType,
+                     ParameterizedType implementation,
+                     ParameterizedType concreteReturnType,
+                     List<Lambda.OutputVariant> outputVariants);
+
     Assignment newAssignment(Expression target, Expression value,
                              MethodInfo assignmentOperator, Boolean prefixPrimitiveOperator,
                              boolean complainAboutAssignmentOutsideType, boolean allowStaticallyAssigned,

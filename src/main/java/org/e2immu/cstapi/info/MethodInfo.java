@@ -1,7 +1,9 @@
 package org.e2immu.cstapi.info;
 
+import org.e2immu.cstapi.analysis.Value;
 import org.e2immu.cstapi.element.Element;
 import org.e2immu.cstapi.element.Source;
+import org.e2immu.cstapi.expression.AnnotationExpression;
 import org.e2immu.cstapi.type.ParameterizedType;
 
 import java.util.List;
@@ -49,10 +51,13 @@ public interface MethodInfo extends Element {
     // from inspection
 
     List<ParameterInfo> parameters();
+    List<AnnotationExpression> annotations();
 
     // from resolution
 
     boolean isOverloadOf(MethodInfo methodInfo);
+    Set<MethodInfo> overrides();
+
     // with inspection
 
     boolean isPublic();
@@ -69,5 +74,7 @@ public interface MethodInfo extends Element {
     boolean isStaticBlock();
 
     boolean isFluent();
+
+    Value.CommutableData commutableData();
 }
 

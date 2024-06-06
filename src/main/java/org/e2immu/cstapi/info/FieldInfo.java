@@ -13,4 +13,7 @@ public interface FieldInfo extends Element {
     String fullyQualifiedName();
 
     boolean isStatic();
+
+
+    boolean isPropertyFinal();
 }

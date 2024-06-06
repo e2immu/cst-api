@@ -5,4 +5,5 @@ package org.e2immu.cstapi.element;
  */
 public interface Source extends Comparable<Source> {
 
+    boolean isSameBlock(Source other);
 }

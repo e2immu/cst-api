@@ -9,6 +9,7 @@ import org.e2immu.support.Either;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Stream;
 
 public interface TypeInfo extends NamedType, Element {
 
@@ -43,7 +44,29 @@ public interface TypeInfo extends NamedType, Element {
 
     MethodInfo findUniqueMethod(String tryCatch, TypeInfo typeInfoOfFirstParameter);
 
+    ParameterizedType parentClass();
+
+    List<ParameterizedType> interfacesImplemented();
+
+    default List<MethodInfo> methods() {
+        return methodStream(null).toList();
+    }
+
+    interface Methods {
+
+    }
+
+    default Stream<MethodInfo> methodStream() {
+        return methodStream(null);
+    }
+
+    Stream<MethodInfo> methodStream(Methods methods);
+
+    List<MethodInfo> constructors();
+
     boolean isStatic();
+
+    boolean isInterface();
 
     TypeInfo primaryType();
 

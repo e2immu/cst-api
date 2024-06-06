@@ -3,6 +3,7 @@ package org.e2immu.cstapi.runtime;
 import org.e2immu.cstapi.expression.Expression;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public interface Eval {
 
@@ -15,7 +16,6 @@ public interface Eval {
     Expression remainder(Expression lhs, Expression rhs);
 
     Expression equals(Expression lhs, Expression rhs);
-
 
     Expression greater(Expression lhs, Expression rhs, boolean allowEquals);
 
@@ -32,4 +32,8 @@ public interface Eval {
     boolean isNotNull0(Expression expression);
 
     int limitOnComplexity();
+
+    Stream<Expression> expandTerms(Expression expression, boolean negate);
+
+    Expression sortAndSimplify(Expression expression);
 }
