@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public interface LocalVariableCreation {
+public interface LocalVariableCreation extends Statement {
 
     interface Modifier {
         boolean isFinal(); // the only one in Java; in Kotlin, this represents "val"

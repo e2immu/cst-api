@@ -4,6 +4,8 @@ import org.e2immu.annotation.Fluent;
 import org.e2immu.annotation.ImmutableContainer;
 import org.e2immu.annotation.NotNull;
 import org.e2immu.annotation.rare.IgnoreModifications;
+import org.e2immu.cstapi.analysis.Property;
+import org.e2immu.cstapi.analysis.Value;
 import org.e2immu.cstapi.expression.AnnotationExpression;
 import org.e2immu.cstapi.info.TypeInfo;
 import org.e2immu.cstapi.output.OutputBuilder;
@@ -117,5 +119,14 @@ public interface Element {
 
         @Fluent
         Builder addAnnotations(List<AnnotationExpression> annotations);
+    }
+
+    default Value analysed(Property property) {
+        throw new UnsupportedOperationException();
+    }
+
+    default Value analysedOrDefault(Property property, Value defaultValue) {
+        assert defaultValue != null;
+        throw new UnsupportedOperationException();
     }
 }

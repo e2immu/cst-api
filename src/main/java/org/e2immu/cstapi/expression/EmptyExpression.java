@@ -13,5 +13,6 @@ public interface EmptyExpression extends Expression {
         return true;
     }
 
+    String msg();
 
 }

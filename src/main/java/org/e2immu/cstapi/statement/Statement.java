@@ -5,6 +5,7 @@ import org.e2immu.annotation.NotNull;
 import org.e2immu.cstapi.element.Element;
 import org.e2immu.cstapi.expression.AnnotationExpression;
 import org.e2immu.cstapi.expression.Expression;
+import org.e2immu.cstapi.translate.TranslationMap;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -42,5 +43,9 @@ public interface Statement extends Element {
     interface Builder extends Element.Builder {
         @Fluent
         Builder setLabel(String label);
+    }
+
+    default Statement translate(TranslationMap translationMap) {
+        return this;
     }
 }

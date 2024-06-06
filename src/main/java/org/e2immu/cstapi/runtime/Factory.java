@@ -7,6 +7,7 @@ import org.e2immu.cstapi.info.MethodInfo;
 import org.e2immu.cstapi.info.MethodModifier;
 import org.e2immu.cstapi.info.TypeInfo;
 import org.e2immu.cstapi.statement.*;
+import org.e2immu.cstapi.translate.TranslationMap;
 import org.e2immu.cstapi.type.*;
 import org.e2immu.cstapi.variable.DependentVariable;
 import org.e2immu.cstapi.variable.LocalVariable;
@@ -51,7 +52,7 @@ public interface Factory {
                                        ParameterizedType pt, Diamond diamond, List<Expression> parameterExpressions,
                                        TypeInfo anonymousClass, ArrayInitializer arrayInitializer);
 
-    IfElseStatement newIfElseStatement(String label, Expression condition, Block ifBlock, Block elseBlock, Comment comment);
+    IfElseStatement newIfElseStatement(Expression condition, Block ifBlock, Block elseBlock);
 
     ExpressionAsStatement newExpressionAsStatement(Expression standardized);
 
@@ -187,4 +188,16 @@ public interface Factory {
     Expression nullConstant();
 
     LocalVariable newLocalVariable(String name, ParameterizedType parameterizedType);
+
+    LocalVariable newLocalVariable(String name, ParameterizedType parameterizedType, Expression assignmentExpression);
+
+    EmptyExpression newEmptyExpression();
+
+    EmptyExpression newEmptyExpression(String msg);
+
+    LocalVariableCreation newLocalVariableCreation(LocalVariable lvc);
+
+    TranslationMap.Builder newTranslationMapBuilder();
+
+    TranslationMap.Builder newTranslationMapBuilder(TranslationMap startingPoint);
 }

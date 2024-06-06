@@ -64,5 +64,7 @@ public interface MethodInfo extends Element {
     boolean isSyntheticConstructor();
 
     boolean isStaticBlock();
+
+    boolean isFluent();
 }
 

@@ -1,6 +1,7 @@
 package org.e2immu.cstapi.expression;
 
 import org.e2immu.cstapi.element.Element;
+import org.e2immu.cstapi.translate.TranslationMap;
 import org.e2immu.cstapi.type.ParameterizedType;
 
 public interface Expression extends Comparable<Expression>, Element {
@@ -54,5 +55,9 @@ public interface Expression extends Comparable<Expression>, Element {
 
     default Expression conditionOfInlineConditional() {
         return null;
+    }
+
+    default Expression translate(TranslationMap translationMap) {
+        return this;
     }
 }

@@ -14,4 +14,6 @@ public interface LocalVariable extends Variable {
     default String fullyQualifiedName() {
         return simpleName();
     }
+
+    LocalVariable withAssignmentExpression(Expression expression);
 }
