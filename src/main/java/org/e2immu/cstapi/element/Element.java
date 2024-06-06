@@ -82,14 +82,10 @@ public interface Element {
     Stream<Variable> variables(DescendMode descendMode);
 
     @NotNull
-    default List<Variable> variableList() {
-        return variables(null).toList();
-    }
+    Stream<Variable> variableStreamDoNotDescend();
 
     @NotNull
-    default Set<Variable> variableSet() {
-        return variables(null).collect(Collectors.toUnmodifiableSet());
-    }
+    Stream<Variable> variableStreamDescend();
 
     interface TypeReference {
         /**

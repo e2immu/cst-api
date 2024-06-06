@@ -7,5 +7,5 @@ public interface ParameterInfo extends Variable {
 
     String name();
 
-    boolean parameterAnalysisIsSet();
+    boolean isVarArgs();
 }

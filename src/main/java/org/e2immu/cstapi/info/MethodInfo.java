@@ -51,9 +51,12 @@ public interface MethodInfo extends Element {
     List<ParameterInfo> parameters();
 
     // from resolution
-    boolean isOverloadOf(MethodInfo methodInfo);
 
+    boolean isOverloadOf(MethodInfo methodInfo);
     // with inspection
+
+    boolean isPublic();
+    boolean isPubliclyAccessible();
     boolean isOverloadOfJLOEquals();
 
     // from analysis

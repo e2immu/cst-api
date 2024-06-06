@@ -62,4 +62,6 @@ public interface TypeInfo extends NamedType, Element {
     boolean isDouble();
 
     boolean isChar();
+
+    boolean isPublic();
 }
