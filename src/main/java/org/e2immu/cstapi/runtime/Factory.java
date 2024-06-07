@@ -94,6 +94,8 @@ public interface Factory {
 
     TypeParameter newTypeParameter(String typeParameterName, int tpCnt);
 
+    TypeParameter newTypeParameter(String typeParameterName, int tpCnt, List<ParameterizedType> typeBounds);
+
     ParameterizedType WILDCARD_PARAMETERIZED_TYPE();
 
     ParameterizedType parameterizedTypeRETURN_TYPE_OF_CONSTRUCTOR();

@@ -25,6 +25,11 @@ public interface ParameterizedType {
 
     List<ParameterizedType> parameters();
 
+    /**
+     * @return null in case of an unbound type parameter, in which case "JLO" can be understood.
+     */
+    TypeInfo bestTypeInfo();
+
     // identification
 
     String fullyQualifiedName();
@@ -98,5 +103,9 @@ public interface ParameterizedType {
 
     boolean isTypeOfNullConstant();
 
-    ParameterizedType concreteDirectSuperType(Runtime runtime, ParameterizedType interfaceImplemented);
+    ParameterizedType concreteDirectSuperType(ParameterizedType interfaceImplemented);
+
+    ParameterizedType concreteSuperType(ParameterizedType superType);
+
+    ParameterizedType commonType(Runtime runtime, ParameterizedType other);
 }

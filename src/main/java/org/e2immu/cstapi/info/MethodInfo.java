@@ -57,6 +57,8 @@ public interface MethodInfo extends Info {
 
     List<ParameterInfo> parameters();
 
+    List<TypeParameter> typeParameters();
+
     List<AnnotationExpression> annotations();
 
     Block methodBody();
@@ -89,6 +91,9 @@ public interface MethodInfo extends Info {
     Value.CommutableData commutableData();
 
     Builder builder();
+
+    boolean isPropertyNotNull();
+    boolean isPropertyNullable();
 
     interface Builder extends Info.Builder {
         /**

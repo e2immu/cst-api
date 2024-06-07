@@ -14,5 +14,7 @@ public interface FieldInfo extends Info {
     boolean isStatic();
 
 
+    boolean isPropertyNotNull();
+
     boolean isPropertyFinal();
 }

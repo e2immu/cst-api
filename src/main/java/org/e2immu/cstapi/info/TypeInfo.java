@@ -9,6 +9,7 @@ import org.e2immu.support.Either;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 public interface TypeInfo extends NamedType, Info {
@@ -33,6 +34,8 @@ public interface TypeInfo extends NamedType, Info {
 
 
     // from inspection
+    Set<TypeInfo> superTypesExcludingJavaLangObject();
+
     ParameterizedType asParameterizedType();
 
     List<TypeParameter> typeParameters();

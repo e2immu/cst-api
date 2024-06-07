@@ -1,6 +1,7 @@
 package org.e2immu.cstapi.output;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * Interface to hold the output that's being accumulated while printing.
@@ -16,6 +17,8 @@ public interface OutputBuilder {
     OutputBuilder add(OutputBuilder... outputBuilders);
 
     List<OutputElement> list();
+
+    Stream<OutputElement> stream();
 
     boolean isEmpty();
 
