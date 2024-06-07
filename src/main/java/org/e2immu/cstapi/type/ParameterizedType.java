@@ -42,6 +42,8 @@ public interface ParameterizedType {
 
     // conversions
 
+    ParameterizedType ensureBoxed(Runtime runtime);
+
     ParameterizedType erased();
 
     ParameterizedType copyWithArrays(int arrays);
@@ -108,4 +110,6 @@ public interface ParameterizedType {
     ParameterizedType concreteSuperType(ParameterizedType superType);
 
     ParameterizedType commonType(Runtime runtime, ParameterizedType other);
+
+    boolean isUnboundWildcard();
 }

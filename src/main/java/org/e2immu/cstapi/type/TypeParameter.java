@@ -20,7 +20,7 @@ public interface TypeParameter extends NamedType {
         return getOwner().isRight();
     }
 
-    List<ParameterizedType> getTypeBounds();
+    List<ParameterizedType> typeBounds();
 
     ParameterizedType toParameterizedType();
 

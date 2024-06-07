@@ -92,9 +92,13 @@ public interface Factory {
 
     ParameterizedType newParameterizedType(TypeParameter typeParameter, int index, Wildcard wildCard);
 
-    TypeParameter newTypeParameter(String typeParameterName, int tpCnt);
+    TypeParameter newTypeParameter(String typeParameterName, int tpCnt, TypeInfo owner);
 
-    TypeParameter newTypeParameter(String typeParameterName, int tpCnt, List<ParameterizedType> typeBounds);
+    TypeParameter newTypeParameter(String typeParameterName, int tpCnt, List<ParameterizedType> typeBounds, TypeInfo owner);
+
+    TypeParameter newTypeParameter(String typeParameterName, int tpCnt, MethodInfo owner);
+
+    TypeParameter newTypeParameter(String typeParameterName, int tpCnt, List<ParameterizedType> typeBounds, MethodInfo owner);
 
     ParameterizedType WILDCARD_PARAMETERIZED_TYPE();
 

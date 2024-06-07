@@ -5,9 +5,11 @@ import org.e2immu.cstapi.analysis.Value;
 import org.e2immu.cstapi.element.Element;
 import org.e2immu.cstapi.element.Source;
 import org.e2immu.cstapi.expression.AnnotationExpression;
+import org.e2immu.cstapi.expression.Expression;
 import org.e2immu.cstapi.statement.Block;
 import org.e2immu.cstapi.type.ParameterizedType;
 import org.e2immu.cstapi.type.TypeParameter;
+import org.e2immu.cstapi.util.ParSeq;
 
 import java.util.List;
 import java.util.Set;
@@ -88,7 +90,19 @@ public interface MethodInfo extends Info {
 
     boolean isFluent();
 
+    // related to commutation of parameters
+
     Value.CommutableData commutableData();
+
+    ParSeq<ParameterInfo> getParallelGroups();
+
+    default boolean hasParallelGroups() {
+        ParSeq<ParameterInfo> parSeq = getParallelGroups();
+        return parSeq != null && parSeq.containsParallels();
+    }
+
+    List<Expression> sortAccordingToParallelGroupsAndNaturalOrder(List<Expression> parameterExpressions);
+
 
     Builder builder();
 

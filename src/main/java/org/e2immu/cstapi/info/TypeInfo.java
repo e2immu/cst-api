@@ -67,6 +67,22 @@ public interface TypeInfo extends NamedType, Info {
      */
     MethodInfo singleAbstractMethod();
 
+    boolean isNumeric();
+
+    boolean isBoxedExcludingVoid();
+
+    boolean isFunctionalInterface();
+
+    boolean isJavaLangString();
+
+    boolean isJavaLangClass();
+
+    boolean isVoid();
+
+    boolean isJavaLangVoid();
+
+    boolean isBoxedBoolean();
+
     interface Methods {
 
     }
