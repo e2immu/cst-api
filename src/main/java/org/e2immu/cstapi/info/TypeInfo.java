@@ -33,6 +33,7 @@ public interface TypeInfo extends NamedType, Element {
 
 
     // from inspection
+    ParameterizedType asParameterizedType();
 
     List<TypeParameter> typeParameters();
 
@@ -52,6 +53,12 @@ public interface TypeInfo extends NamedType, Element {
         return methodStream(null).toList();
     }
 
+    boolean isPrimitiveExcludingVoid();
+
+    boolean isJavaIoSerializable();
+
+    boolean isJavaLangObject();
+
     interface Methods {
 
     }
@@ -63,6 +70,8 @@ public interface TypeInfo extends NamedType, Element {
     Stream<MethodInfo> methodStream(Methods methods);
 
     List<MethodInfo> constructors();
+
+    List<FieldInfo> fields();
 
     boolean isStatic();
 

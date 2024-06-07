@@ -89,4 +89,6 @@ public interface ParameterizedType {
     default boolean isType() {
         return typeInfo() != null;
     }
+
+    TypeInfo toBoxed(Runtime runtime);
 }

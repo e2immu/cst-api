@@ -3,16 +3,14 @@ package org.e2immu.cstapi.runtime;
 import org.e2immu.cstapi.element.Comment;
 import org.e2immu.cstapi.element.Element;
 import org.e2immu.cstapi.expression.*;
+import org.e2immu.cstapi.info.FieldInfo;
 import org.e2immu.cstapi.info.MethodInfo;
 import org.e2immu.cstapi.info.MethodModifier;
 import org.e2immu.cstapi.info.TypeInfo;
 import org.e2immu.cstapi.statement.*;
 import org.e2immu.cstapi.translate.TranslationMap;
 import org.e2immu.cstapi.type.*;
-import org.e2immu.cstapi.variable.DependentVariable;
-import org.e2immu.cstapi.variable.LocalVariable;
-import org.e2immu.cstapi.variable.This;
-import org.e2immu.cstapi.variable.Variable;
+import org.e2immu.cstapi.variable.*;
 
 import java.util.List;
 
@@ -56,15 +54,15 @@ public interface Factory {
 
     ExpressionAsStatement newExpressionAsStatement(Expression standardized);
 
-    ThrowStatement newThrowStatement(String label, Expression expression, Comment comment);
+    ThrowStatement newThrowStatement(Expression expression);
 
-    AssertStatement newAssertStatement(String label, Expression check, Expression message);
+    AssertStatement newAssertStatement(Expression check, Expression message);
 
     ReturnStatement newReturnStatement(Expression expression);
 
     Element.Builder newReturnStatementBuilder();
 
-    WhileStatement newWhileStatement(String label, Expression loopCondition, Block block, Comment comment);
+    WhileStatement newWhileStatement(Expression loopCondition, Block block);
 
     Block.Builder newBlockBuilder();
 
@@ -196,6 +194,8 @@ public interface Factory {
 
     LocalVariable newLocalVariable(String name, ParameterizedType parameterizedType, Expression assignmentExpression);
 
+    FieldReference newFieldReference(FieldInfo fieldInfo, Expression scope);
+
     EmptyExpression newEmptyExpression();
 
     EmptyExpression newEmptyExpression(String msg);
@@ -205,4 +205,12 @@ public interface Factory {
     TranslationMap.Builder newTranslationMapBuilder();
 
     TranslationMap.Builder newTranslationMapBuilder(TranslationMap startingPoint);
+
+    MethodInfo newMethod(TypeInfo owner);
+
+    MethodInfo newMethod(TypeInfo owner, String name, MethodInfo.MethodType methodType);
+
+    MethodInfo.MethodType newMethodTypeMethod();
+
+    MethodInfo.MethodType newMethodTypeStaticMethod();
 }

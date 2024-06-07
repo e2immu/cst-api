@@ -42,11 +42,6 @@ public interface TranslationMap {
         return parameterizedType;
     }
 
-    @NotNull
-    default LocalVariable translateLocalVariable(LocalVariable localVariable) {
-        return localVariable;
-    }
-
     default boolean isEmpty() {
         return true;
     }
