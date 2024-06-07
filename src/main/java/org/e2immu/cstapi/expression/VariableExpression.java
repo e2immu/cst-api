@@ -8,7 +8,7 @@ public interface VariableExpression extends Expression {
 
     Variable variable();
 
-    Variable withSuffix(Suffix suffix);
+    VariableExpression withSuffix(Suffix suffix);
 
     interface Suffix {
         OutputBuilder print();

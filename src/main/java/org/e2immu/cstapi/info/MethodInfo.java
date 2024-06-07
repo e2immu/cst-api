@@ -12,7 +12,7 @@ import org.e2immu.cstapi.type.TypeParameter;
 import java.util.List;
 import java.util.Set;
 
-public interface MethodInfo extends Element {
+public interface MethodInfo extends Info {
     boolean isConstructor();
 
     TypeInfo primaryType();
@@ -22,8 +22,6 @@ public interface MethodInfo extends Element {
     boolean isDefault();
 
     boolean isVoid();
-
-    int complexity();
 
     boolean complexityGreaterThanCOMPLEXITY_METHOD_WITHOUT_CODE();
 
@@ -35,8 +33,12 @@ public interface MethodInfo extends Element {
 
     boolean isInfix();
 
-    enum MethodType {
-        METHOD, CONSTRUCTOR, STATIC_METHOD;
+    boolean isSynthetic();
+
+    interface MethodType {
+        boolean isStatic();
+
+        boolean isConstructor();
     }
 
     String name();
@@ -88,7 +90,7 @@ public interface MethodInfo extends Element {
 
     Builder builder();
 
-    interface Builder {
+    interface Builder extends Info.Builder {
         /**
          * Intermediate step: the fully qualified name can now be computed, because all
          * parameters are known.

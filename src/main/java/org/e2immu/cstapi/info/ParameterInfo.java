@@ -1,6 +1,7 @@
 package org.e2immu.cstapi.info;
 
 import org.e2immu.annotation.Fluent;
+import org.e2immu.cstapi.element.Element;
 import org.e2immu.cstapi.variable.Variable;
 
 public interface ParameterInfo extends Variable {
@@ -12,7 +13,7 @@ public interface ParameterInfo extends Variable {
 
     Builder builder();
 
-    interface Builder {
+    interface Builder extends Info.Builder {
         void commit();
 
         @Fluent

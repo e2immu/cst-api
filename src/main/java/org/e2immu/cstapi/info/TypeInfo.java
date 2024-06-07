@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
-public interface TypeInfo extends NamedType, Element {
+public interface TypeInfo extends NamedType, Info {
 
     String fullyQualifiedName();
 
@@ -58,6 +58,11 @@ public interface TypeInfo extends NamedType, Element {
     boolean isJavaIoSerializable();
 
     boolean isJavaLangObject();
+
+    /**
+     * @return null when the type is not a functional interface
+     */
+    MethodInfo singleAbstractMethod();
 
     interface Methods {
 

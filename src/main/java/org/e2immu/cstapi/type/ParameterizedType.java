@@ -91,4 +91,12 @@ public interface ParameterizedType {
     }
 
     TypeInfo toBoxed(Runtime runtime);
+
+    String printForMethodFQN(boolean varArgs, Diamond diamond);
+
+    boolean equalsIgnoreArrays(ParameterizedType other);
+
+    boolean isTypeOfNullConstant();
+
+    ParameterizedType concreteDirectSuperType(Runtime runtime, ParameterizedType interfaceImplemented);
 }
