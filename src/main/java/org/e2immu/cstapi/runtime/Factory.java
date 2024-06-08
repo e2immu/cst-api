@@ -2,11 +2,9 @@ package org.e2immu.cstapi.runtime;
 
 import org.e2immu.cstapi.element.Comment;
 import org.e2immu.cstapi.element.Element;
+import org.e2immu.cstapi.element.Source;
 import org.e2immu.cstapi.expression.*;
-import org.e2immu.cstapi.info.FieldInfo;
-import org.e2immu.cstapi.info.MethodInfo;
-import org.e2immu.cstapi.info.MethodModifier;
-import org.e2immu.cstapi.info.TypeInfo;
+import org.e2immu.cstapi.info.*;
 import org.e2immu.cstapi.statement.*;
 import org.e2immu.cstapi.translate.TranslationMap;
 import org.e2immu.cstapi.type.*;
@@ -219,4 +217,8 @@ public interface Factory {
     MethodInfo.MethodType newMethodTypeMethod();
 
     MethodInfo.MethodType newMethodTypeStaticMethod();
+
+    Comment newSingleLineComment(String comment);
+
+    Source newParserSource(Info info, int beginLine, int beginPos, int endLine, int endPos);
 }

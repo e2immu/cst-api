@@ -1,9 +1,11 @@
 package org.e2immu.cstapi.info;
 
 
+import org.e2immu.annotation.Fluent;
 import org.e2immu.cstapi.element.Element;
 import org.e2immu.cstapi.type.NamedType;
 import org.e2immu.cstapi.type.ParameterizedType;
+import org.e2immu.cstapi.type.TypeNature;
 import org.e2immu.cstapi.type.TypeParameter;
 import org.e2immu.support.Either;
 
@@ -120,4 +122,25 @@ public interface TypeInfo extends NamedType, Info {
     boolean isChar();
 
     boolean isPublic();
+
+    Builder builder();
+
+    interface Builder extends Info.Builder {
+        @Fluent
+        Builder addTypeModifier(TypeModifier typeModifier);
+
+        @Fluent
+        Builder addMethod(MethodInfo methodInfo);
+
+        @Fluent
+        Builder setTypeNature(TypeNature typeNature);
+
+        @Fluent
+        Builder setParentClass(ParameterizedType parentClass);
+
+        @Fluent
+        Builder addInterfaceImplemented(ParameterizedType interfaceImplemented);
+
+        void commit();
+    }
 }
