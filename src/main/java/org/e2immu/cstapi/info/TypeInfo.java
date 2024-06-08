@@ -129,7 +129,7 @@ public interface TypeInfo extends NamedType, Info {
 
     TypeNature typeNature();
 
-    interface Builder extends Info.Builder {
+    interface Builder extends Info.Builder<Builder> {
         @Fluent
         Builder addSubType(TypeInfo subType);
 
