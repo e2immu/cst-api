@@ -107,9 +107,10 @@ public interface MethodInfo extends Info {
     Builder builder();
 
     boolean isPropertyNotNull();
+
     boolean isPropertyNullable();
 
-    interface Builder extends Info.Builder {
+    interface Builder extends Info.Builder<Builder> {
         /**
          * Intermediate step: the fully qualified name can now be computed, because all
          * parameters are known.

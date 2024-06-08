@@ -85,6 +85,8 @@ public interface TypeInfo extends NamedType, Info {
 
     boolean isBoxedBoolean();
 
+    List<TypeInfo> subTypes();
+
     interface Methods {
 
     }
@@ -125,7 +127,12 @@ public interface TypeInfo extends NamedType, Info {
 
     Builder builder();
 
+    TypeNature typeNature();
+
     interface Builder extends Info.Builder {
+        @Fluent
+        Builder addSubType(TypeInfo subType);
+
         @Fluent
         Builder addTypeModifier(TypeModifier typeModifier);
 

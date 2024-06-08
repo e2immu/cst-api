@@ -6,4 +6,6 @@ public interface TypeNature {
     boolean isInterface();
 
     boolean isStatic(); // is true for all but inner classes in Java
+
+    boolean isAnnotation();
 }

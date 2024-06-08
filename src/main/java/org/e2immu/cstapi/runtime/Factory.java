@@ -220,5 +220,7 @@ public interface Factory {
 
     Comment newSingleLineComment(String comment);
 
+    Comment newMultilineComment(String comment);
+
     Source newParserSource(Info info, int beginLine, int beginPos, int endLine, int endPos);
 }

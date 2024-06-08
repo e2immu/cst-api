@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 public interface Block extends Statement {
     List<Statement> statements();
 
-    interface Builder extends Statement.Builder {
+    interface Builder extends Statement.Builder<Builder> {
 
         Block build();
 

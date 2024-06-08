@@ -100,21 +100,21 @@ public interface Element {
     Stream<TypeReference> typesReferenced();
 
 
-    interface Builder {
+    interface Builder<B extends Builder<?>> {
         @Fluent
-        Builder setSource(Source source);
+        B setSource(Source source);
 
         @Fluent
-        Builder addComment(Comment comment);
+        B addComment(Comment comment);
 
         @Fluent
-        Builder addComments(List<Comment> comments);
+        B addComments(List<Comment> comments);
 
         @Fluent
-        Builder addAnnotation(AnnotationExpression annotation);
+        B addAnnotation(AnnotationExpression annotation);
 
         @Fluent
-        Builder addAnnotations(List<AnnotationExpression> annotations);
+        B addAnnotations(List<AnnotationExpression> annotations);
     }
 
     default <V extends Value> V analysed(Property property, Class<V> clazz) {

@@ -6,9 +6,9 @@ import org.e2immu.cstapi.element.Element;
 public interface Info extends Element {
     Access access();
 
-    interface Builder extends Element.Builder {
+    interface Builder<B extends Builder<?>> extends Element.Builder<B> {
         @Fluent
-        Builder setAccess(Access access);
+        B setAccess(Access access);
     }
 
 }

@@ -32,13 +32,13 @@ public interface FieldInfo extends Info {
     boolean isPropertyFinal();
 
 
-    interface Builder extends Info.Builder {
+    interface Builder<B extends Builder<?>> extends Info.Builder<B> {
 
         @Fluent
-        Builder addFieldModifier(FieldModifier fieldModifier);
+        B addFieldModifier(FieldModifier fieldModifier);
 
         @Fluent
-        Builder setInitializer(Expression initializer);
+        B setInitializer(Expression initializer);
 
         void commit();
     }
