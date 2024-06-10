@@ -106,9 +106,9 @@ public interface ParameterizedType {
 
     boolean isTypeOfNullConstant();
 
-    ParameterizedType concreteDirectSuperType(ParameterizedType interfaceImplemented);
+    ParameterizedType concreteDirectSuperType(Runtime runtime, ParameterizedType interfaceImplemented);
 
-    ParameterizedType concreteSuperType(ParameterizedType superType);
+    ParameterizedType concreteSuperType(Runtime runtime, ParameterizedType superType);
 
     ParameterizedType commonType(Runtime runtime, ParameterizedType other);
 
@@ -131,7 +131,7 @@ public interface ParameterizedType {
     HashMap<K, V> implements Map<K, V>
     Given Map<K, V>, go from abstract to concrete (HM:K to Map:K, HM:V to Map:V)
     */
-    Map<NamedType, ParameterizedType> forwardTypeParameterMap();
+    Map<NamedType, ParameterizedType> forwardTypeParameterMap(Runtime runtime);
 
     ParameterizedType applyTranslation(PredefinedWithoutParameterizedType predefined,
                                        Map<NamedType, ParameterizedType> translate);

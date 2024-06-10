@@ -3,6 +3,7 @@ package org.e2immu.cstapi.info;
 
 import org.e2immu.annotation.Fluent;
 import org.e2immu.cstapi.element.CompilationUnit;
+import org.e2immu.cstapi.runtime.Runtime;
 import org.e2immu.cstapi.type.NamedType;
 import org.e2immu.cstapi.type.ParameterizedType;
 import org.e2immu.cstapi.type.TypeNature;
@@ -41,7 +42,7 @@ public interface TypeInfo extends NamedType, Info {
     // from inspection
     Set<TypeInfo> superTypesExcludingJavaLangObject();
 
-    ParameterizedType asParameterizedType();
+    ParameterizedType asParameterizedType(Runtime runtime);
 
     List<TypeParameter> typeParameters();
 
