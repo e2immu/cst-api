@@ -219,4 +219,6 @@ public interface Factory {
     Source newParserSource(Info info, int beginLine, int beginPos, int endLine, int endPos);
 
     CompilationUnit.Builder newCompilationUnitBuilder();
+
+    Wildcard wildcardEXTENDS();
 }

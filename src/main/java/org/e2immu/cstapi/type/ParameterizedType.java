@@ -10,6 +10,7 @@ import org.e2immu.cstapi.runtime.PredefinedWithoutParameterizedType;
 import org.e2immu.cstapi.runtime.Runtime;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 public interface ParameterizedType {
@@ -112,4 +113,26 @@ public interface ParameterizedType {
     ParameterizedType commonType(Runtime runtime, ParameterizedType other);
 
     boolean isUnboundWildcard();
+
+    ParameterizedType mostSpecific(Runtime runtime,
+                                   TypeInfo primaryType,
+                                   ParameterizedType other);
+
+    /*
+       Given a concrete type (List<String>) make a map from the type's abstract parameters to its concrete ones (E -> String)
+
+       If the abstract type contains self-references, we cannot recurse, because their type parameters have the same name...
+       With visited, the method returns K=Integer, V=Map<Integer,String> when presented with Map<Integer,Map<Integer,String>>,
+       without visited, it would recurse and return K=Integer, V=String
+       */
+    Map<NamedType, ParameterizedType> initialTypeParameterMap(Runtime runtime);
+
+    /*
+    HashMap<K, V> implements Map<K, V>
+    Given Map<K, V>, go from abstract to concrete (HM:K to Map:K, HM:V to Map:V)
+    */
+    Map<NamedType, ParameterizedType> forwardTypeParameterMap();
+
+    ParameterizedType applyTranslation(PredefinedWithoutParameterizedType predefined,
+                                       Map<NamedType, ParameterizedType> translate);
 }

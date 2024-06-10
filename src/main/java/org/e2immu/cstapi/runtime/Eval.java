@@ -53,13 +53,13 @@ public interface Eval {
             return and(and.expressions());
         }
         if (expression instanceof GreaterThanZero gt0) {
-            return greaterThanZero(gt0);
+            return greaterThanZero(gt0.expression());
         }
         if (expression instanceof Equals equals) {
             return equals(equals.lhs(), equals.rhs());
         }
         if (expression instanceof Negation negation) {
-            return negate(negation);
+            return negate(negation.expression());
         }
         if (expression instanceof Divide divide) {
             return divide(divide.lhs(), divide.rhs());
