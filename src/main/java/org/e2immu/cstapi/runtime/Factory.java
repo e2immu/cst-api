@@ -2,7 +2,6 @@ package org.e2immu.cstapi.runtime;
 
 import org.e2immu.cstapi.element.Comment;
 import org.e2immu.cstapi.element.CompilationUnit;
-import org.e2immu.cstapi.element.Element;
 import org.e2immu.cstapi.element.Source;
 import org.e2immu.cstapi.expression.*;
 import org.e2immu.cstapi.info.*;
@@ -59,7 +58,7 @@ public interface Factory {
 
     ReturnStatement newReturnStatement(Expression expression);
 
-    Element.Builder newReturnStatementBuilder();
+    ReturnStatement.Builder newReturnStatementBuilder();
 
     WhileStatement newWhileStatement(Expression loopCondition, Block block);
 

@@ -5,7 +5,6 @@ import org.e2immu.annotation.NotNull;
 import org.e2immu.cstapi.element.Element;
 import org.e2immu.cstapi.expression.AnnotationExpression;
 import org.e2immu.cstapi.expression.Expression;
-import org.e2immu.cstapi.info.Info;
 import org.e2immu.cstapi.translate.TranslationMap;
 
 import java.util.List;
