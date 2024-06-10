@@ -2,6 +2,7 @@ package org.e2immu.cstapi.info;
 
 import org.e2immu.annotation.Fluent;
 import org.e2immu.cstapi.analysis.Value;
+import org.e2immu.cstapi.element.CompilationUnit;
 import org.e2immu.cstapi.element.Element;
 import org.e2immu.cstapi.element.Source;
 import org.e2immu.cstapi.expression.AnnotationExpression;
@@ -109,6 +110,10 @@ public interface MethodInfo extends Info {
     boolean isPropertyNotNull();
 
     boolean isPropertyNullable();
+
+    default CompilationUnit compilationUnit() {
+        return typeInfo().compilationUnit();
+    }
 
     interface Builder extends Info.Builder<Builder> {
         /**

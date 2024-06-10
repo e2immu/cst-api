@@ -2,14 +2,13 @@ package org.e2immu.cstapi.info;
 
 
 import org.e2immu.annotation.Fluent;
-import org.e2immu.cstapi.element.Element;
+import org.e2immu.cstapi.element.CompilationUnit;
 import org.e2immu.cstapi.type.NamedType;
 import org.e2immu.cstapi.type.ParameterizedType;
 import org.e2immu.cstapi.type.TypeNature;
 import org.e2immu.cstapi.type.TypeParameter;
 import org.e2immu.support.Either;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -23,8 +22,13 @@ public interface TypeInfo extends NamedType, Info {
     // for java, that will be packageName == "java.lang"
     boolean doesNotRequirePackage();
 
+    default CompilationUnit compilationUnit() {
+        return compilationUnitOrEnclosingType().isLeft() ? compilationUnitOrEnclosingType().getLeft()
+                : compilationUnitOrEnclosingType().getRight().compilationUnit();
+    }
+
     default boolean isPrimaryType() {
-        return packageNameOrEnclosingType().isLeft();
+        return compilationUnitOrEnclosingType().isLeft();
     }
 
     String packageName();
@@ -32,8 +36,7 @@ public interface TypeInfo extends NamedType, Info {
     // chain of type names Primary.Sub.Sub2
     String fromPrimaryTypeDownwards();
 
-    Either<String, TypeInfo> packageNameOrEnclosingType();
-
+    Either<CompilationUnit, TypeInfo> compilationUnitOrEnclosingType();
 
     // from inspection
     Set<TypeInfo> superTypesExcludingJavaLangObject();

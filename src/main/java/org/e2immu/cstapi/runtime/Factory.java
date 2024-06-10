@@ -1,6 +1,7 @@
 package org.e2immu.cstapi.runtime;
 
 import org.e2immu.cstapi.element.Comment;
+import org.e2immu.cstapi.element.CompilationUnit;
 import org.e2immu.cstapi.element.Element;
 import org.e2immu.cstapi.element.Source;
 import org.e2immu.cstapi.expression.*;
@@ -112,12 +113,6 @@ public interface Factory {
 
     MethodModifier methodModifierPUBLIC();
 
-
-    // make sure to use context.newAnd(..) when context available
-
-    // make sure to use context.newOr(..) when context available
-    Or newOr(List<Expression> expressions);
-
     InlineConditional newInlineConditional(Expression condition, Expression ifTrue, Expression ifFalse);
 
     SwitchExpression newSwitchExpression(VariableExpression selector,
@@ -223,4 +218,6 @@ public interface Factory {
     Comment newMultilineComment(String comment);
 
     Source newParserSource(Info info, int beginLine, int beginPos, int endLine, int endPos);
+
+    CompilationUnit.Builder newCompilationUnitBuilder();
 }

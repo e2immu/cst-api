@@ -1,6 +1,7 @@
 package org.e2immu.cstapi.info;
 
 import org.e2immu.annotation.Fluent;
+import org.e2immu.cstapi.element.CompilationUnit;
 import org.e2immu.cstapi.expression.Expression;
 import org.e2immu.cstapi.type.ParameterizedType;
 
@@ -31,6 +32,9 @@ public interface FieldInfo extends Info {
     // as opposed to isFinal, which is the modifier
     boolean isPropertyFinal();
 
+    default CompilationUnit compilationUnit() {
+        return owner().compilationUnit();
+    }
 
     interface Builder<B extends Builder<?>> extends Info.Builder<B> {
 
