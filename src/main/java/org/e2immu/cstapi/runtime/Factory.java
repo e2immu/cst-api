@@ -221,4 +221,7 @@ public interface Factory {
     CompilationUnit.Builder newCompilationUnitBuilder();
 
     Wildcard wildcardEXTENDS();
+
+    EnclosedExpression newEnclosedExpression(Expression inner);
+
 }
