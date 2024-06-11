@@ -24,8 +24,6 @@ public interface Factory {
 
     BinaryOperator newBinaryOperator(Expression lhs, MethodInfo operator, Expression rhs, Precedence precedence);
 
-    MethodCall newMethodCall(boolean b, Expression newObject, MethodInfo methodInfo, ParameterizedType parameterizedType, List<Expression> newParams);
-
     ConstructorCall newObjectCreation(Expression scope, MethodInfo constructor, ParameterizedType parameterizedType, Diamond diamond, List<Expression> newParams);
 
     GreaterThanZero newGreaterThanZero(Expression e, boolean allowEquals);
@@ -40,7 +38,9 @@ public interface Factory {
 
     ArrayLength newArrayLength(Expression e);
 
-    MethodCall newMethodCall(Expression object, MethodInfo takeWhile, List<Expression> parameterExpressions);
+    MethodCall newMethodCall(Expression object, MethodInfo methodInfo, List<Expression> parameterExpressions);
+
+    MethodCall.Builder newMethodCallBuilder();
 
     TypeExpression newTypeExpression(ParameterizedType parameterizedType, Diamond diamond);
 
@@ -82,7 +82,9 @@ public interface Factory {
 
     ConstructorCall objectCreation(Expression scope, MethodInfo constructor, ParameterizedType parameterizedType, Diamond diamond, List<Expression> parameterExpressions);
 
-    TypeInfo newTypeInfo(TypeInfo typeInfo, String capitalized);
+    TypeInfo newTypeInfo(TypeInfo typeInfo, String simpleName);
+
+    TypeInfo newTypeInfo(CompilationUnit cu, String simpleName);
 
     ParameterizedType newParameterizedType(TypeInfo typeInfo, List<ParameterizedType> newParameters);
 
@@ -120,10 +122,6 @@ public interface Factory {
 
     SwitchEntry newStatementsSwitchEntry(VariableExpression selector,
                                          List<Expression> labels, List<Statement> statements);
-
-    MethodCall newMethodCall(boolean objectIsImplicit, Expression object,
-                             MethodInfo methodInfo, ParameterizedType parameterizedType,
-                             List<Expression> expressions, String modificationTimes);
 
     CharConstant newChar(char c);
 
@@ -192,7 +190,9 @@ public interface Factory {
 
     LocalVariable newLocalVariable(String name, ParameterizedType parameterizedType, Expression assignmentExpression);
 
-    FieldReference newFieldReference(FieldInfo fieldInfo, Expression scope);
+    FieldReference newFieldReference(FieldInfo fieldInfo);
+
+    FieldReference newFieldReference(FieldInfo fieldInfo, Expression scope, ParameterizedType concreteReturnType);
 
     EmptyExpression newEmptyExpression();
 
