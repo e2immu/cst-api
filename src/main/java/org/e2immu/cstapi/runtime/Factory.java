@@ -291,4 +291,6 @@ public interface Factory {
     MethodModifier newMethodModifierDefault();
 
     MethodInfo.MethodType newMethodTypeConstructor();
+
+    ForEachStatement.Builder newForEachBuilder();
 }
