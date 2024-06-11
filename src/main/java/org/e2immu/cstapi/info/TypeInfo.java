@@ -151,6 +151,9 @@ public interface TypeInfo extends NamedType, Info {
         Builder addField(FieldInfo field);
 
         @Fluent
+        Builder addConstructor(MethodInfo constructor);
+
+        @Fluent
         Builder setTypeNature(TypeNature typeNature);
 
         @Fluent
