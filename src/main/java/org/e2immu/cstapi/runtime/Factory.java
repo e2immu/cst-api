@@ -273,4 +273,22 @@ public interface Factory {
     TypeModifier newTypeModifierNonSealed();
 
     TypeModifier newTypeModifierStatic();
+
+    MethodModifier newMethodModifierFinal();
+
+    MethodModifier newMethodModifierPrivate();
+
+    MethodModifier newMethodModifierProtected();
+
+    MethodModifier newMethodModifierPublic();
+
+    MethodModifier newMethodModifierStatic();
+
+    MethodModifier newMethodModifierSynchronized();
+
+    MethodModifier newMethodModifierAbstract();
+
+    MethodModifier newMethodModifierDefault();
+
+    MethodInfo.MethodType newMethodTypeConstructor();
 }

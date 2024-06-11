@@ -91,6 +91,10 @@ public interface TypeInfo extends NamedType, Info {
 
     List<TypeInfo> subTypes();
 
+    boolean isPrivate();
+
+    boolean isAbstract();
+
     interface Methods {
 
     }

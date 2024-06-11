@@ -38,6 +38,8 @@ public interface MethodInfo extends Info {
 
     boolean isSynthetic();
 
+    boolean isAbstract();
+
     interface MethodType {
         boolean isStatic();
 
