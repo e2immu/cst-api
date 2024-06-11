@@ -5,7 +5,13 @@ public interface FieldModifier {
 
     boolean isFinal();
 
-boolean isVolatile();
+    boolean isVolatile();
 
-boolean isTransient();
+    boolean isTransient();
+
+    boolean isPublic();
+
+    boolean isPrivate();
+
+    boolean isProtected();
 }

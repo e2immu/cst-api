@@ -5,6 +5,8 @@ import org.e2immu.cstapi.element.CompilationUnit;
 import org.e2immu.cstapi.expression.Expression;
 import org.e2immu.cstapi.type.ParameterizedType;
 
+import java.util.Set;
+
 public interface FieldInfo extends Info {
     String name();
 
@@ -37,6 +39,10 @@ public interface FieldInfo extends Info {
     }
 
     Builder builder();
+
+    Set<FieldModifier> modifiers();
+
+    Expression initializer();
 
     interface Builder extends Info.Builder<Builder> {
 

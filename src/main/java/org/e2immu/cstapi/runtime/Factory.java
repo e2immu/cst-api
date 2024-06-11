@@ -125,7 +125,7 @@ public interface Factory {
                              MethodInfo methodInfo, ParameterizedType parameterizedType,
                              List<Expression> expressions, String modificationTimes);
 
-    CharConstant newCharConstant(char c);
+    CharConstant newChar(char c);
 
     This newThis(TypeInfo typeInfo);
 
@@ -237,4 +237,40 @@ public interface Factory {
     FieldModifier newFieldModifierProtected();
 
     FieldModifier newFieldModifierVolatile();
+
+    Access newAccessPackage();
+
+    Access newAccessPrivate();
+
+    Access newAccessProtected();
+
+    Access newAccessPublic();
+
+    FieldInfo newFieldInfo(String name, boolean isStatic, ParameterizedType parameterizedType, TypeInfo owner);
+
+    TypeNature newTypeNatureClass();
+
+    TypeNature newTypeNatureAnnotation();
+
+    TypeNature newTypeNatureInterface();
+
+    TypeNature newTypeNatureEnum();
+
+    TypeNature newTypeNatureRecord();
+
+    TypeModifier newTypeModifierPublic();
+
+    TypeModifier newTypeModifierPrivate();
+
+    TypeModifier newTypeModifierProtected();
+
+    TypeModifier newTypeModifierFinal();
+
+    TypeModifier newTypeModifierSealed();
+
+    TypeModifier newTypeModifierAbstract();
+
+    TypeModifier newTypeModifierNonSealed();
+
+    TypeModifier newTypeModifierStatic();
 }
