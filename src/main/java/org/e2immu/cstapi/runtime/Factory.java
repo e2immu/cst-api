@@ -224,4 +224,17 @@ public interface Factory {
 
     EnclosedExpression newEnclosedExpression(Expression inner);
 
+    FieldModifier newFieldModifierFinal();
+
+    FieldModifier newFieldModifierTransient();
+
+    FieldModifier newFieldModifierStatic();
+
+    FieldModifier newFieldModifierPublic();
+
+    FieldModifier newFieldModifierPrivate();
+
+    FieldModifier newFieldModifierProtected();
+
+    FieldModifier newFieldModifierVolatile();
 }

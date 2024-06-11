@@ -36,13 +36,15 @@ public interface FieldInfo extends Info {
         return owner().compilationUnit();
     }
 
-    interface Builder<B extends Builder<?>> extends Info.Builder<B> {
+    Builder builder();
+
+    interface Builder extends Info.Builder<Builder> {
 
         @Fluent
-        B addFieldModifier(FieldModifier fieldModifier);
+        Builder addFieldModifier(FieldModifier fieldModifier);
 
         @Fluent
-        B setInitializer(Expression initializer);
+        Builder setInitializer(Expression initializer);
 
         void commit();
     }
