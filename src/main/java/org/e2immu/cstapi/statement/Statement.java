@@ -45,7 +45,7 @@ public interface Statement extends Element {
         B setLabel(String label);
     }
 
-    default Statement translate(TranslationMap translationMap) {
-        return this;
+    default List<Statement> translate(TranslationMap translationMap) {
+        return List.of(this);
     }
 }

@@ -2,6 +2,7 @@ package org.e2immu.cstapi.runtime;
 
 import org.e2immu.cstapi.element.Comment;
 import org.e2immu.cstapi.element.CompilationUnit;
+import org.e2immu.cstapi.element.Element;
 import org.e2immu.cstapi.element.Source;
 import org.e2immu.cstapi.expression.*;
 import org.e2immu.cstapi.info.*;
@@ -216,7 +217,7 @@ public interface Factory {
 
     Comment newMultilineComment(String comment);
 
-    Source newParserSource(Info info, int beginLine, int beginPos, int endLine, int endPos);
+    Source newParserSource(Element parent, String index, int beginLine, int beginPos, int endLine, int endPos);
 
     CompilationUnit.Builder newCompilationUnitBuilder();
 
@@ -293,4 +294,8 @@ public interface Factory {
     MethodInfo.MethodType newMethodTypeConstructor();
 
     ForEachStatement.Builder newForEachBuilder();
+
+    WhileStatement.Builder newWhileStatementBuilder();
+
+    VariableExpression.Builder newVariableExpressionBuilder();
 }

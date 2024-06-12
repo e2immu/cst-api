@@ -95,6 +95,20 @@ public interface TypeInfo extends NamedType, Info {
 
     boolean isAbstract();
 
+    boolean isCharacter();
+
+    boolean isBoxedLong();
+
+    boolean isInteger();
+
+    boolean isBoxedShort();
+
+    boolean isBoxedByte();
+
+    boolean isBoxedDouble();
+
+    boolean isBoxedFloat();
+
     interface Methods {
 
     }

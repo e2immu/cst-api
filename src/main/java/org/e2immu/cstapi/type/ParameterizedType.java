@@ -135,4 +135,6 @@ public interface ParameterizedType {
 
     ParameterizedType applyTranslation(PredefinedWithoutParameterizedType predefined,
                                        Map<NamedType, ParameterizedType> translate);
+
+    boolean isMathematicallyInteger();
 }

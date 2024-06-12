@@ -73,4 +73,5 @@ public interface Eval {
 
     Stream<Expression> expandTerms(Expression expression, boolean negate);
 
+    Expression less(Expression lhs, Expression rhs, boolean allowEquals);
 }

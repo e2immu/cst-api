@@ -15,6 +15,8 @@ public interface LocalVariableCreation extends Statement {
         boolean isWithoutTypeSpecification(); // Java "var"
     }
 
+    boolean isVar();
+
     Set<Modifier> modifiers();
 
     LocalVariable localVariable();
