@@ -15,83 +15,213 @@ import java.util.List;
 
 public interface Factory {
 
-    TypeNature typeNatureCLASS();
+    Access accessPackage();
 
-    Assignment newAssignment(Expression target, Expression value);
+    Access accessPrivate();
 
-    Equals newEquals(Expression lhs, Expression rhs);
+    Access accessProtected();
 
-    InstanceOf newInstanceOf(ParameterizedType parameterizedType, Expression expression, LocalVariable patternVariable);
+    Access accessPublic();
 
-    BinaryOperator newBinaryOperator(Expression lhs, MethodInfo operator, Expression rhs, Precedence precedence);
+    ParameterizedType commonType(ParameterizedType pt1, ParameterizedType pt2);
 
-    ConstructorCall newObjectCreation(Expression scope, MethodInfo constructor, ParameterizedType parameterizedType, Diamond diamond, List<Expression> newParams);
+    default BooleanConstant constantFalse() {
+        return newBoolean(false);
+    }
 
-    GreaterThanZero newGreaterThanZero(Expression e, boolean allowEquals);
+    default BooleanConstant constantTrue() {
+        return newBoolean(true);
+    }
 
-    Cast newCast(Expression e, ParameterizedType parameterizedType);
+    Expression constructorCallWithArrayInitializer(MethodInfo constructor, ParameterizedType returnType, List<Object> of, ArrayInitializer initializer);
 
-    MethodReference newMethodReference(Expression e, MethodInfo methodInfo, ParameterizedType parameterizedType);
+    Diamond diamondNo();
 
-    UnaryOperator newUnaryOperator(MethodInfo operator, Expression e, Precedence precedence);
+    Diamond diamondYes();
+
+    Diamond diamondShowAll();
+
+    Block emptyBlock();
+
+    FieldModifier fieldModifierFinal();
+
+    FieldModifier fieldModifierPrivate();
+
+    FieldModifier fieldModifierProtected();
+
+    FieldModifier fieldModifierPublic();
+
+    FieldModifier fieldModifierStatic();
+
+    FieldModifier fieldModifierTransient();
+
+    FieldModifier fieldModifierVolatile();
+
+    IntConstant intMinusOne();
+
+    IntConstant intOne();
+
+    Numeric intOrDouble(double v);
+
+    IntConstant intZero();
+
+    MethodModifier methodModifierAbstract();
+
+    MethodModifier methodModifierDefault();
+
+    MethodModifier methodModifierFinal();
+
+    MethodModifier methodModifierPrivate();
+
+    MethodModifier methodModifierProtected();
+
+    MethodModifier methodModifierPublic();
+
+    MethodModifier methodModifierStatic();
+
+    MethodModifier methodModifierSynchronized();
 
     ArrayInitializer newArrayInitializer(List<Expression> expressions, ParameterizedType commonType);
 
     ArrayLength newArrayLength(Expression e);
 
-    MethodCall newMethodCall(Expression object, MethodInfo methodInfo, List<Expression> parameterExpressions);
-
-    MethodCall.Builder newMethodCallBuilder();
-
-    TypeExpression newTypeExpression(ParameterizedType parameterizedType, Diamond diamond);
-
-    ConstructorCall newConstructorCall(Expression scope, MethodInfo constructor,
-                                       ParameterizedType pt, Diamond diamond, List<Expression> parameterExpressions,
-                                       TypeInfo anonymousClass, ArrayInitializer arrayInitializer);
-
-    IfElseStatement newIfElseStatement(Expression condition, Block ifBlock, Block elseBlock);
-
-    ExpressionAsStatement newExpressionAsStatement(Expression standardized);
-
-    ThrowStatement newThrowStatement(Expression expression);
-
     AssertStatement newAssertStatement(Expression check, Expression message);
 
-    ReturnStatement newReturnStatement(Expression expression);
-
-    ReturnStatement.Builder newReturnStatementBuilder();
-
-    WhileStatement newWhileStatement(Expression loopCondition, Block block);
-
-    Block.Builder newBlockBuilder();
-
-    Block emptyBlock();
-
-    Lambda newLambda(ParameterizedType abstractFunctionalType,
-                     ParameterizedType implementation,
-                     ParameterizedType concreteReturnType,
-                     List<Lambda.OutputVariant> outputVariants);
+    Assignment newAssignment(Expression target, Expression value);
 
     Assignment newAssignment(Expression target, Expression value,
                              MethodInfo assignmentOperator, Boolean prefixPrimitiveOperator,
                              boolean complainAboutAssignmentOutsideType, boolean allowStaticallyAssigned,
                              Expression evaluationOfValue);
 
-    VariableExpression newVariableExpression(Variable variable);
+    BinaryOperator newBinaryOperator(Expression lhs, MethodInfo operator, Expression rhs, Precedence precedence);
 
-    StringConstant newStringConstant(String string);
+    Block.Builder newBlockBuilder();
 
-    ConstructorCall objectCreation(Expression scope, MethodInfo constructor, ParameterizedType parameterizedType, Diamond diamond, List<Expression> parameterExpressions);
+    BooleanConstant newBoolean(boolean value);
 
-    TypeInfo newTypeInfo(TypeInfo typeInfo, String simpleName);
+    ByteConstant newByte(byte b);
 
-    TypeInfo newTypeInfo(CompilationUnit cu, String simpleName);
+    Cast newCast(Expression e, ParameterizedType parameterizedType);
+
+    CharConstant newChar(char c);
+
+    CompilationUnit.Builder newCompilationUnitBuilder();
+
+    ConstructorCall newConstructorCall(Expression scope, MethodInfo constructor,
+                                       ParameterizedType pt, Diamond diamond, List<Expression> parameterExpressions,
+                                       TypeInfo anonymousClass, ArrayInitializer arrayInitializer);
+
+    DependentVariable newDependentVariable(Expression array, Expression index,
+                                           String statementIndex, TypeInfo owningType);
+
+    DoubleConstant newDouble(double d);
+
+    EmptyExpression newEmptyExpression();
+
+    EmptyExpression newEmptyExpression(String msg);
+
+    EnclosedExpression newEnclosedExpression(Expression inner);
+
+    Equals newEquals(Expression lhs, Expression rhs);
+
+    ExpressionAsStatement newExpressionAsStatement(Expression standardized);
+
+    FieldInfo newFieldInfo(String name, boolean isStatic, ParameterizedType parameterizedType, TypeInfo owner);
+
+    FieldReference newFieldReference(FieldInfo fieldInfo);
+
+    FieldReference newFieldReference(FieldInfo fieldInfo, Expression scope, ParameterizedType concreteReturnType);
+
+    FloatConstant newFloat(float f);
+
+    ForEachStatement.Builder newForEachBuilder();
+
+    GreaterThanZero newGreaterThanZero(Expression e, boolean allowEquals);
+
+    IfElseStatement newIfElseStatement(Expression condition, Block ifBlock, Block elseBlock);
+
+    InlineConditional newInlineConditional(Expression condition, Expression ifTrue, Expression ifFalse);
+
+    Instance newInstanceForTooComplex(ParameterizedType parameterizedType);
+
+    InstanceOf newInstanceOf(ParameterizedType parameterizedType, Expression expression, LocalVariable patternVariable);
+
+    IntConstant newInt(int i);
+
+    Lambda newLambda(ParameterizedType abstractFunctionalType,
+                     ParameterizedType implementation,
+                     ParameterizedType concreteReturnType,
+                     List<Lambda.OutputVariant> outputVariants);
+
+    LocalVariable newLocalVariable(String name, ParameterizedType parameterizedType);
+
+    LocalVariable newLocalVariable(String name, ParameterizedType parameterizedType, Expression assignmentExpression);
+
+    LocalVariableCreation newLocalVariableCreation(LocalVariable lvc);
+
+    LongConstant newLong(long l);
+
+    MethodInfo newMethod(TypeInfo owner);
+
+    MethodInfo newMethod(TypeInfo owner, String name, MethodInfo.MethodType methodType);
+
+    MethodCall newMethodCall(Expression object, MethodInfo methodInfo, List<Expression> parameterExpressions);
+
+    MethodCall.Builder newMethodCallBuilder();
+
+    MethodReference newMethodReference(Expression e, MethodInfo methodInfo, ParameterizedType parameterizedType);
+
+    MethodInfo.MethodType newMethodTypeConstructor();
+
+    MethodInfo.MethodType newMethodTypeMethod();
+
+    MethodInfo.MethodType newMethodTypeStaticMethod();
+
+    Expression newMultiExpressions(List<Expression> newExpressions);
+
+    Comment newMultilineComment(String comment);
+
+    ConstructorCall newObjectCreation(Expression scope, MethodInfo constructor, ParameterizedType parameterizedType, Diamond diamond, List<Expression> newParams);
 
     ParameterizedType newParameterizedType(TypeInfo typeInfo, List<ParameterizedType> newParameters);
 
     ParameterizedType newParameterizedType(TypeInfo typeInfo, int arrays);
 
     ParameterizedType newParameterizedType(TypeParameter typeParameter, int index, Wildcard wildCard);
+
+    Source newParserSource(Element parent, String index, int beginLine, int beginPos, int endLine, int endPos);
+
+    ReturnStatement newReturnStatement(Expression expression);
+
+    ReturnStatement.Builder newReturnStatementBuilder();
+
+    ShortConstant newShort(short s);
+
+    Comment newSingleLineComment(String comment);
+
+    SwitchEntry newStatementsSwitchEntry(VariableExpression selector,
+                                         List<Expression> labels, List<Statement> statements);
+
+    StringConstant newStringConstant(String string);
+
+    SwitchExpression newSwitchExpression(VariableExpression selector,
+                                         List<SwitchEntry> switchEntries, ParameterizedType parameterizedType,
+                                         List<Expression> expressions);
+
+    This newThis(TypeInfo typeInfo);
+
+    ThrowStatement newThrowStatement(Expression expression);
+
+    TranslationMap.Builder newTranslationMapBuilder();
+
+    TranslationMap.Builder newTranslationMapBuilder(TranslationMap startingPoint);
+
+    TypeExpression newTypeExpression(ParameterizedType parameterizedType, Diamond diamond);
+
+    TypeInfo newTypeInfo(TypeInfo typeInfo, String simpleName);
+
+    TypeInfo newTypeInfo(CompilationUnit cu, String simpleName);
 
     TypeParameter newTypeParameter(String typeParameterName, int tpCnt, TypeInfo owner);
 
@@ -101,201 +231,67 @@ public interface Factory {
 
     TypeParameter newTypeParameter(String typeParameterName, int tpCnt, List<ParameterizedType> typeBounds, MethodInfo owner);
 
-    ParameterizedType WILDCARD_PARAMETERIZED_TYPE();
+    UnaryOperator newUnaryOperator(MethodInfo operator, Expression e, Precedence precedence);
 
-    ParameterizedType parameterizedTypeRETURN_TYPE_OF_CONSTRUCTOR();
+    VariableExpression newVariableExpression(Variable variable);
 
-    Diamond diamondYES();
+    VariableExpression.Builder newVariableExpressionBuilder();
 
-    Diamond diamondNO();
-
-    Expression constructorCallWithArrayInitializer(MethodInfo constructor, ParameterizedType returnType, List<Object> of, ArrayInitializer initializer);
-
-    MethodModifier methodModifierSTATIC();
-
-    MethodModifier methodModifierPUBLIC();
-
-    InlineConditional newInlineConditional(Expression condition, Expression ifTrue, Expression ifFalse);
-
-    SwitchExpression newSwitchExpression(VariableExpression selector,
-                                         List<SwitchEntry> switchEntries, ParameterizedType parameterizedType,
-                                         List<Expression> expressions);
-
-    SwitchEntry newStatementsSwitchEntry(VariableExpression selector,
-                                         List<Expression> labels, List<Statement> statements);
-
-    CharConstant newChar(char c);
-
-    This newThis(TypeInfo typeInfo);
-
-    DependentVariable newDependentVariable(Expression array, Expression index,
-                                           String statementIndex, TypeInfo owningType);
-
-    Expression newMultiExpressions(List<Expression> newExpressions);
-
-    BooleanConstant newBooleanConstant(boolean value);
-
-    default BooleanConstant constantTrue() {
-        return newBooleanConstant(true);
-    }
-
-    default BooleanConstant constantFalse() {
-        return newBooleanConstant(false);
-    }
-
-    IntConstant zero();
-
-    IntConstant one();
-
-    IntConstant minusOne();
-
-    Instance newInstanceForTooComplex(ParameterizedType parameterizedType);
-
-    ParameterizedType commonType(ParameterizedType pt1, ParameterizedType pt2);
-
-    Precedence precedenceUNARY();
-
-    Precedence precedenceEQUALITY();
-
-    Precedence precedenceGREATERTHAN();
-
-    Expression nullValue(TypeInfo typeInfo);
-
-    Precedence precedenceAND();
-
-    Precedence precedenceOR();
-
-    Precedence precedenceASSIGNMENT();
-
-    Precedence precedenceMULTIPLICATIVE();
-
-    Precedence precedenceADDITIVE();
-
-    IntConstant newInt(int i);
-
-    LongConstant newLong(long l);
-
-    ShortConstant newShort(short s);
-
-    ByteConstant newByte(byte b);
-
-    FloatConstant newFloat(float f);
-
-    DoubleConstant newDouble(double d);
-
-    Numeric intOrDouble(double v);
-
-    Expression nullConstant();
-
-    LocalVariable newLocalVariable(String name, ParameterizedType parameterizedType);
-
-    LocalVariable newLocalVariable(String name, ParameterizedType parameterizedType, Expression assignmentExpression);
-
-    FieldReference newFieldReference(FieldInfo fieldInfo);
-
-    FieldReference newFieldReference(FieldInfo fieldInfo, Expression scope, ParameterizedType concreteReturnType);
-
-    EmptyExpression newEmptyExpression();
-
-    EmptyExpression newEmptyExpression(String msg);
-
-    LocalVariableCreation newLocalVariableCreation(LocalVariable lvc);
-
-    TranslationMap.Builder newTranslationMapBuilder();
-
-    TranslationMap.Builder newTranslationMapBuilder(TranslationMap startingPoint);
-
-    MethodInfo newMethod(TypeInfo owner);
-
-    MethodInfo newMethod(TypeInfo owner, String name, MethodInfo.MethodType methodType);
-
-    MethodInfo.MethodType newMethodTypeMethod();
-
-    MethodInfo.MethodType newMethodTypeStaticMethod();
-
-    Comment newSingleLineComment(String comment);
-
-    Comment newMultilineComment(String comment);
-
-    Source newParserSource(Element parent, String index, int beginLine, int beginPos, int endLine, int endPos);
-
-    CompilationUnit.Builder newCompilationUnitBuilder();
-
-    Wildcard wildcardEXTENDS();
-
-    EnclosedExpression newEnclosedExpression(Expression inner);
-
-    FieldModifier newFieldModifierFinal();
-
-    FieldModifier newFieldModifierTransient();
-
-    FieldModifier newFieldModifierStatic();
-
-    FieldModifier newFieldModifierPublic();
-
-    FieldModifier newFieldModifierPrivate();
-
-    FieldModifier newFieldModifierProtected();
-
-    FieldModifier newFieldModifierVolatile();
-
-    Access newAccessPackage();
-
-    Access newAccessPrivate();
-
-    Access newAccessProtected();
-
-    Access newAccessPublic();
-
-    FieldInfo newFieldInfo(String name, boolean isStatic, ParameterizedType parameterizedType, TypeInfo owner);
-
-    TypeNature newTypeNatureClass();
-
-    TypeNature newTypeNatureAnnotation();
-
-    TypeNature newTypeNatureInterface();
-
-    TypeNature newTypeNatureEnum();
-
-    TypeNature newTypeNatureRecord();
-
-    TypeModifier newTypeModifierPublic();
-
-    TypeModifier newTypeModifierPrivate();
-
-    TypeModifier newTypeModifierProtected();
-
-    TypeModifier newTypeModifierFinal();
-
-    TypeModifier newTypeModifierSealed();
-
-    TypeModifier newTypeModifierAbstract();
-
-    TypeModifier newTypeModifierNonSealed();
-
-    TypeModifier newTypeModifierStatic();
-
-    MethodModifier newMethodModifierFinal();
-
-    MethodModifier newMethodModifierPrivate();
-
-    MethodModifier newMethodModifierProtected();
-
-    MethodModifier newMethodModifierPublic();
-
-    MethodModifier newMethodModifierStatic();
-
-    MethodModifier newMethodModifierSynchronized();
-
-    MethodModifier newMethodModifierAbstract();
-
-    MethodModifier newMethodModifierDefault();
-
-    MethodInfo.MethodType newMethodTypeConstructor();
-
-    ForEachStatement.Builder newForEachBuilder();
+    WhileStatement newWhileStatement(Expression loopCondition, Block block);
 
     WhileStatement.Builder newWhileStatementBuilder();
 
-    VariableExpression.Builder newVariableExpressionBuilder();
+    Expression nullConstant();
+
+    Expression nullValue(TypeInfo typeInfo);
+
+    ConstructorCall objectCreation(Expression scope, MethodInfo constructor, ParameterizedType parameterizedType, Diamond diamond, List<Expression> parameterExpressions);
+
+    ParameterizedType parameterizedTypeReturnTypeOfConstructor();
+
+    ParameterizedType parameterizedTypeWildcard();
+
+    Precedence precedenceAdditive();
+
+    Precedence precedenceAnd();
+
+    Precedence precedenceAssignment();
+
+    Precedence precedenceEquality();
+
+    Precedence precedenceGreaterThan();
+
+    Precedence precedenceMultiplicative();
+
+    Precedence precedenceOr();
+
+    Precedence precedenceUnary();
+
+    TypeModifier typeModifierAbstract();
+
+    TypeModifier typeModifierFinal();
+
+    TypeModifier typeModifierNonSealed();
+
+    TypeModifier typeModifierPrivate();
+
+    TypeModifier typeModifierProtected();
+
+    TypeModifier typeModifierPublic();
+
+    TypeModifier typeModifierSealed();
+
+    TypeModifier typeModifierStatic();
+
+    TypeNature typeNatureAnnotation();
+
+    TypeNature typeNatureClass();
+
+    TypeNature typeNatureEnum();
+
+    TypeNature typeNatureInterface();
+
+    TypeNature typeNatureRecord();
+
+    Wildcard wildcardExtends();
 }

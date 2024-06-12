@@ -6,21 +6,39 @@ import org.e2immu.cstapi.info.TypeInfo;
 import org.e2immu.cstapi.type.ParameterizedType;
 
 public interface Predefined extends PredefinedWithoutParameterizedType {
-    ParameterizedType intParameterizedType();
+    MethodInfo assignOperator(ParameterizedType parameterizedType);
 
     ParameterizedType booleanParameterizedType();
 
     ParameterizedType boxedBooleanParameterizedType();
 
-    ParameterizedType longParameterizedType();
+    ParameterizedType byteParameterizedType();
+
+    ParameterizedType charParameterizedType();
 
     ParameterizedType doubleParameterizedType();
 
     ParameterizedType floatParameterizedType();
 
+    AnnotationExpression functionalInterfaceAnnotationExpression();
+
+    ParameterizedType intParameterizedType();
+
+    int isAssignableFromTo(ParameterizedType from, ParameterizedType to, boolean covariant);
+
+    ParameterizedType longParameterizedType();
+
+    ParameterizedType objectParameterizedType();
+
+    int primitiveTypeOrder(ParameterizedType pt);
+
+    int reversePrimitiveTypeOrder(ParameterizedType pt);
+
     ParameterizedType shortParameterizedType();
 
-    ParameterizedType charParameterizedType();
+    ParameterizedType stringParameterizedType();
+
+    ParameterizedType voidParameterizedType();
 
     ParameterizedType widestType(ParameterizedType t1, ParameterizedType t2);
 
@@ -29,6 +47,5 @@ public interface Predefined extends PredefinedWithoutParameterizedType {
     ParameterizedType.commonType)
      */
     ParameterizedType widestTypeUnbox(ParameterizedType t1, ParameterizedType t2);
-
 
 }

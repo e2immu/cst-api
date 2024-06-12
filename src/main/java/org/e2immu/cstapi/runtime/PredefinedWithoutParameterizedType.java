@@ -1,75 +1,31 @@
 package org.e2immu.cstapi.runtime;
 
-import org.e2immu.cstapi.expression.*;
 import org.e2immu.cstapi.info.MethodInfo;
 import org.e2immu.cstapi.info.TypeInfo;
-import org.e2immu.cstapi.type.ParameterizedType;
 
 public interface PredefinedWithoutParameterizedType {
 
-    TypeInfo boxed(TypeInfo typeInfo);
-
-    MethodInfo equalsOperatorObject();
-
-    MethodInfo notEqualsOperatorObject();
-
-    MethodInfo plusOperatorString();
-
-    MethodInfo equalsOperatorInt();
-
-    MethodInfo lessOperatorInt();
-
-    MethodInfo lessEqualsOperatorInt();
-
-    MethodInfo greaterOperatorInt();
-
-    MethodInfo greaterEqualsOperatorInt();
-
-    MethodInfo notEqualsOperatorInt();
-
-    TypeInfo objectTypeInfo();
-
-    MethodInfo plusOperatorInt();
-
-    MethodInfo multiplyOperatorInt();
-
-    MethodInfo minusOperatorInt();
-
-    MethodInfo divideOperatorInt();
     MethodInfo andOperatorBool();
-
-    MethodInfo orOperatorBool();
 
     MethodInfo andOperatorInt();
 
-    MethodInfo orOperatorInt();
+    MethodInfo assignAndOperatorInt();
 
-    MethodInfo bitwiseXorOperatorInt();
+    MethodInfo assignDivideOperatorInt();
 
-    TypeInfo stringTypeInfo();
-
-    TypeInfo unboxed(TypeInfo typeInfo);
-
-
-    TypeInfo booleanTypeInfo();
-
-    TypeInfo boxedBooleanTypeInfo();
-
-    MethodInfo assignOperatorInt();
-
-    MethodInfo assignPlusOperatorInt();
+    MethodInfo assignLeftShiftOperatorInt();
 
     MethodInfo assignMinusOperatorInt();
 
     MethodInfo assignMultiplyOperatorInt();
 
-    MethodInfo assignDivideOperatorInt();
+    MethodInfo assignOperatorInt();
 
     MethodInfo assignOrOperatorInt();
 
-    MethodInfo assignAndOperatorInt();
+    MethodInfo assignPlusOperatorInt();
 
-    MethodInfo assignLeftShiftOperatorInt();
+    MethodInfo assignRemainderOperatorInt();
 
     MethodInfo assignSignedRightShiftOperatorInt();
 
@@ -77,72 +33,93 @@ public interface PredefinedWithoutParameterizedType {
 
     MethodInfo assignXorOperatorInt();
 
-    MethodInfo assignRemainderOperatorInt();
+    MethodInfo bitWiseNotOperatorInt();
 
-    MethodInfo xorOperatorInt();
+    MethodInfo bitwiseXorOperatorInt();
 
-    MethodInfo xorOperatorBool();
+    TypeInfo booleanTypeInfo();
 
-    MethodInfo leftShiftOperatorInt();
+    TypeInfo boxed(TypeInfo typeInfo);
 
-    MethodInfo signedRightShiftOperatorInt();
-
-    MethodInfo unsignedRightShiftOperatorInt();
-
-    MethodInfo remainderOperatorInt();
-
-
-    int primitiveTypeOrder(ParameterizedType pt);
-
-    int reversePrimitiveTypeOrder(ParameterizedType pt);
-
-    TypeInfo primitiveByName(String asString);
-
-
+    TypeInfo boxedBooleanTypeInfo();
 
     TypeInfo charTypeInfo();
 
-    ParameterizedType byteParameterizedType();
+    TypeInfo characterTypeInfo();
 
     TypeInfo classTypeInfo();
 
-    ParameterizedType objectParameterizedType();
+    MethodInfo divideOperatorInt();
 
-    ParameterizedType voidParameterizedType();
+    MethodInfo equalsOperatorInt();
 
-    ParameterizedType stringParameterizedType();
+    MethodInfo equalsOperatorObject();
 
-    MethodInfo unaryPlusOperatorInt();
+    MethodInfo greaterEqualsOperatorInt();
 
-    MethodInfo prefixIncrementOperatorInt();
-
-    MethodInfo postfixIncrementOperatorInt();
-
-    MethodInfo prefixDecrementOperatorInt();
-
-    MethodInfo postfixDecrementOperatorInt();
-
-    MethodInfo bitWiseNotOperatorInt();
-
-    TypeInfo integerTypeInfo();
+    MethodInfo greaterOperatorInt();
 
     TypeInfo intTypeInfo();
 
-    TypeInfo characterTypeInfo();
-
-    AnnotationExpression functionalInterfaceAnnotationExpression();
-
-    MethodInfo assignOperator(ParameterizedType parameterizedType);
-
-    MethodInfo unaryMinusOperatorInt();
-
-    MethodInfo logicalNotOperatorBool();
-
-    int isAssignableFromTo(ParameterizedType from, ParameterizedType to, boolean covariant);
+    TypeInfo integerTypeInfo();
 
     boolean isPreOrPostFixOperator(MethodInfo operator);
 
     boolean isPrefixOperator(MethodInfo operator);
 
+    MethodInfo leftShiftOperatorInt();
+
+    MethodInfo lessEqualsOperatorInt();
+
+    MethodInfo lessOperatorInt();
+
+    MethodInfo logicalNotOperatorBool();
+
+    MethodInfo minusOperatorInt();
+
+    MethodInfo multiplyOperatorInt();
+
+    MethodInfo notEqualsOperatorInt();
+
+    MethodInfo notEqualsOperatorObject();
+
+    TypeInfo objectTypeInfo();
+
+    MethodInfo orOperatorBool();
+
+    MethodInfo orOperatorInt();
+
+    MethodInfo plusOperatorInt();
+
+    MethodInfo plusOperatorString();
+
+    MethodInfo postfixDecrementOperatorInt();
+
+    MethodInfo postfixIncrementOperatorInt();
+
     MethodInfo prePostFixToAssignment(MethodInfo operator);
+
+    MethodInfo prefixDecrementOperatorInt();
+
+    MethodInfo prefixIncrementOperatorInt();
+
+    TypeInfo primitiveByName(String asString);
+
+    MethodInfo remainderOperatorInt();
+
+    MethodInfo signedRightShiftOperatorInt();
+
+    TypeInfo stringTypeInfo();
+
+    MethodInfo unaryMinusOperatorInt();
+
+    MethodInfo unaryPlusOperatorInt();
+
+    TypeInfo unboxed(TypeInfo typeInfo);
+
+    MethodInfo unsignedRightShiftOperatorInt();
+
+    MethodInfo xorOperatorBool();
+
+    MethodInfo xorOperatorInt();
 }

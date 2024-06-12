@@ -26,8 +26,8 @@ public interface Source extends Comparable<Source> {
     // computations: override if you need to use these frequently
 
     default Info info() {
-        if (this instanceof Info info) return info;
         Element parent = parent();
+        if (parent instanceof Info info) return info;
         if (parent == null) return null;
         Source parentSource = parent.source();
         return parentSource == null ? null : parentSource.info();
