@@ -5,7 +5,6 @@ import org.e2immu.cstapi.expression.Expression;
 
 public interface ForEachStatement extends LoopStatement {
     LocalVariableCreation initializer();
-    Expression expression();
 
     interface Builder extends Statement.Builder<Builder> {
 

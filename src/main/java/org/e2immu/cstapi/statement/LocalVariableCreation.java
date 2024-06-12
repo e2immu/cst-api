@@ -1,5 +1,6 @@
 package org.e2immu.cstapi.statement;
 
+import org.e2immu.annotation.Fluent;
 import org.e2immu.cstapi.variable.LocalVariable;
 
 import java.util.List;
@@ -36,5 +37,18 @@ public interface LocalVariableCreation extends Statement {
 
     default boolean hasSingleDeclaration() {
         return otherLocalVariables().isEmpty();
+    }
+
+    interface Builder extends Statement.Builder<Builder> {
+        @Fluent
+        Builder addModifier(Modifier modifier);
+
+        @Fluent
+        Builder setLocalVariable(LocalVariable localVariable);
+
+        @Fluent
+        Builder addOtherLocalVariable(LocalVariable localVariable);
+
+        LocalVariableCreation build();
     }
 }

@@ -4,14 +4,13 @@ import org.e2immu.annotation.Fluent;
 import org.e2immu.cstapi.expression.Expression;
 
 public interface WhileStatement extends LoopStatement {
-    Expression expression();
 
-    interface Builder extends Statement.Builder<WhileStatement.Builder> {
+    interface Builder extends Statement.Builder<Builder> {
         @Fluent
-        WhileStatement.Builder setExpression(Expression expression);
+        Builder setExpression(Expression expression);
 
         @Fluent
-        WhileStatement.Builder setBlock(Block block);
+        Builder setBlock(Block block);
 
         WhileStatement build();
     }

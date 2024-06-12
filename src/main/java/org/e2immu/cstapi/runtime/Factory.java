@@ -85,7 +85,7 @@ public interface Factory {
 
     ArrayLength newArrayLength(Expression e);
 
-    AssertStatement newAssertStatement(Expression check, Expression message);
+    AssertStatement.Builder newAssertStatementBuilder();
 
     Assignment newAssignment(Expression target, Expression value);
 
@@ -126,6 +126,8 @@ public interface Factory {
     Equals newEquals(Expression lhs, Expression rhs);
 
     ExpressionAsStatement newExpressionAsStatement(Expression standardized);
+
+    ExpressionAsStatement.Builder newExpressionAsStatementBuilder();
 
     FieldInfo newFieldInfo(String name, boolean isStatic, ParameterizedType parameterizedType, TypeInfo owner);
 
@@ -237,9 +239,9 @@ public interface Factory {
 
     VariableExpression.Builder newVariableExpressionBuilder();
 
-    WhileStatement newWhileStatement(Expression loopCondition, Block block);
-
     WhileStatement.Builder newWhileStatementBuilder();
+
+    DoStatement.Builder newDoStatementBuilder();
 
     Expression nullConstant();
 

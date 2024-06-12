@@ -5,7 +5,7 @@ import org.e2immu.cstapi.expression.Expression;
 
 public interface ExpressionAsStatement extends Statement {
 
-    interface Builder {
+    interface Builder extends Statement.Builder<Builder> {
         @Fluent
         Builder setExpression(Expression expression);
 
