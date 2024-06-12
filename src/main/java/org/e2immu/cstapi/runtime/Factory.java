@@ -37,9 +37,9 @@ public interface Factory {
 
     Diamond diamondNo();
 
-    Diamond diamondYes();
-
     Diamond diamondShowAll();
+
+    Diamond diamondYes();
 
     Block emptyBlock();
 
@@ -94,7 +94,7 @@ public interface Factory {
                              boolean complainAboutAssignmentOutsideType, boolean allowStaticallyAssigned,
                              Expression evaluationOfValue);
 
-    BinaryOperator newBinaryOperator(Expression lhs, MethodInfo operator, Expression rhs, Precedence precedence);
+    BinaryOperator.Builder newBinaryOperatorBuilder();
 
     Block.Builder newBlockBuilder();
 
@@ -114,6 +114,8 @@ public interface Factory {
 
     DependentVariable newDependentVariable(Expression array, Expression index,
                                            String statementIndex, TypeInfo owningType);
+
+    DoStatement.Builder newDoStatementBuilder();
 
     DoubleConstant newDouble(double d);
 
@@ -141,7 +143,7 @@ public interface Factory {
 
     GreaterThanZero newGreaterThanZero(Expression e, boolean allowEquals);
 
-    IfElseStatement newIfElseStatement(Expression condition, Block ifBlock, Block elseBlock);
+    IfElseStatement.Builder newIfElseBuilder();
 
     InlineConditional newInlineConditional(Expression condition, Expression ifTrue, Expression ifFalse);
 
@@ -194,9 +196,9 @@ public interface Factory {
 
     Source newParserSource(Element parent, String index, int beginLine, int beginPos, int endLine, int endPos);
 
-    ReturnStatement newReturnStatement(Expression expression);
+    ReturnStatement.Builder newReturnBuilder();
 
-    ReturnStatement.Builder newReturnStatementBuilder();
+    ReturnStatement newReturnStatement(Expression expression);
 
     ShortConstant newShort(short s);
 
@@ -213,7 +215,7 @@ public interface Factory {
 
     This newThis(TypeInfo typeInfo);
 
-    ThrowStatement newThrowStatement(Expression expression);
+    ThrowStatement.Builder newThrowBuilder();
 
     TranslationMap.Builder newTranslationMapBuilder();
 
@@ -239,9 +241,7 @@ public interface Factory {
 
     VariableExpression.Builder newVariableExpressionBuilder();
 
-    WhileStatement.Builder newWhileStatementBuilder();
-
-    DoStatement.Builder newDoStatementBuilder();
+    WhileStatement.Builder newWhileBuilder();
 
     Expression nullConstant();
 
