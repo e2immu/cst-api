@@ -2,19 +2,34 @@ package org.e2immu.cstapi.statement;
 
 import org.e2immu.annotation.Fluent;
 import org.e2immu.cstapi.element.Element;
+import org.e2immu.cstapi.element.Visitor;
 import org.e2immu.cstapi.expression.CatchParameter;
 import org.e2immu.cstapi.expression.Expression;
+import org.e2immu.cstapi.variable.DescendMode;
+import org.e2immu.cstapi.variable.Variable;
 
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 public interface TryStatement extends Statement {
 
-    interface CatchClause extends Element {
+    interface CatchClause {
         CatchParameter catchParameter();
 
         Block block();
 
-        interface Builder extends Element.Builder<CatchClause.Builder> {
+        int complexity();
+
+        Stream<TypeReference> typesReferenced();
+
+        Stream<Variable> variables(DescendMode descendMode);
+
+        void visit(Predicate<Element> predicate);
+
+        void visit(Visitor visitor);
+        
+        interface Builder {
             @Fluent
             Builder setBlock(Block block);
 

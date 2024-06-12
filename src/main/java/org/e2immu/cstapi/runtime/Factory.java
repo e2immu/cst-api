@@ -115,7 +115,7 @@ public interface Factory {
     DependentVariable newDependentVariable(Expression array, Expression index,
                                            String statementIndex, TypeInfo owningType);
 
-    DoStatement.Builder newDoStatementBuilder();
+    DoStatement.Builder newDoBuilder();
 
     DoubleConstant newDouble(double d);
 
@@ -213,6 +213,8 @@ public interface Factory {
                                          List<SwitchEntry> switchEntries, ParameterizedType parameterizedType,
                                          List<Expression> expressions);
 
+    SynchronizedStatement.Builder newSynchronizedBuilder();
+
     This newThis(TypeInfo typeInfo);
 
     ThrowStatement.Builder newThrowBuilder();
@@ -220,6 +222,10 @@ public interface Factory {
     TranslationMap.Builder newTranslationMapBuilder();
 
     TranslationMap.Builder newTranslationMapBuilder(TranslationMap startingPoint);
+
+    TryStatement.CatchClause.Builder newCatchClauseBuilder();
+
+    TryStatement.Builder newTryBuilder();
 
     TypeExpression newTypeExpression(ParameterizedType parameterizedType, Diamond diamond);
 
@@ -242,6 +248,8 @@ public interface Factory {
     VariableExpression.Builder newVariableExpressionBuilder();
 
     WhileStatement.Builder newWhileBuilder();
+
+    YieldStatement.Builder newYieldBuilder();
 
     Expression nullConstant();
 
