@@ -3,8 +3,7 @@ package org.e2immu.cstapi.statement;
 import org.e2immu.annotation.Fluent;
 import org.e2immu.cstapi.element.Element;
 import org.e2immu.cstapi.element.Visitor;
-import org.e2immu.cstapi.expression.CatchParameter;
-import org.e2immu.cstapi.expression.Expression;
+import org.e2immu.cstapi.type.ParameterizedType;
 import org.e2immu.cstapi.variable.DescendMode;
 import org.e2immu.cstapi.variable.Variable;
 
@@ -15,7 +14,9 @@ import java.util.stream.Stream;
 public interface TryStatement extends Statement {
 
     interface CatchClause {
-        CatchParameter catchParameter();
+        List<ParameterizedType> exceptionTypes();
+
+        String variableName();
 
         Block block();
 
@@ -28,13 +29,16 @@ public interface TryStatement extends Statement {
         void visit(Predicate<Element> predicate);
 
         void visit(Visitor visitor);
-        
+
         interface Builder {
             @Fluent
             Builder setBlock(Block block);
 
             @Fluent
-            Builder setCatchParameter(CatchParameter catchParameter);
+            Builder addType(ParameterizedType type);
+
+            @Fluent
+            Builder setVariableName(String name);
 
             CatchClause build();
         }

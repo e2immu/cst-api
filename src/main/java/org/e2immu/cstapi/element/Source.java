@@ -37,4 +37,8 @@ public interface Source extends Comparable<Source> {
         Info info = info();
         return info == null ? null : info.compilationUnit();
     }
+
+    default String compact() {
+        return beginLine() + "-" + beginPos();
+    }
 }

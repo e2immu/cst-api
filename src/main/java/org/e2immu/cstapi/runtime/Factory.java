@@ -112,8 +112,7 @@ public interface Factory {
                                        ParameterizedType pt, Diamond diamond, List<Expression> parameterExpressions,
                                        TypeInfo anonymousClass, ArrayInitializer arrayInitializer);
 
-    DependentVariable newDependentVariable(Expression array, Expression index,
-                                           String statementIndex, TypeInfo owningType);
+    DependentVariable newDependentVariable(Expression array, Expression index);
 
     DoStatement.Builder newDoBuilder();
 
