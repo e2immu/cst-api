@@ -89,10 +89,7 @@ public interface Factory {
 
     Assignment newAssignment(Expression target, Expression value);
 
-    Assignment newAssignment(Expression target, Expression value,
-                             MethodInfo assignmentOperator, Boolean prefixPrimitiveOperator,
-                             boolean complainAboutAssignmentOutsideType, boolean allowStaticallyAssigned,
-                             Expression evaluationOfValue);
+    Assignment.Builder newAssignmentBuilder();
 
     BinaryOperator.Builder newBinaryOperatorBuilder();
 
@@ -103,6 +100,8 @@ public interface Factory {
     ByteConstant newByte(byte b);
 
     Cast newCast(Expression e, ParameterizedType parameterizedType);
+
+    TryStatement.CatchClause.Builder newCatchClauseBuilder();
 
     CharConstant newChar(char c);
 
@@ -221,8 +220,6 @@ public interface Factory {
     TranslationMap.Builder newTranslationMapBuilder();
 
     TranslationMap.Builder newTranslationMapBuilder(TranslationMap startingPoint);
-
-    TryStatement.CatchClause.Builder newCatchClauseBuilder();
 
     TryStatement.Builder newTryBuilder();
 
