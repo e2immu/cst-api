@@ -117,15 +117,7 @@ public interface Element {
         B addAnnotations(List<AnnotationExpression> annotations);
     }
 
-    default <V extends Value> V analysed(Property property, Class<V> clazz) {
-        throw new UnsupportedOperationException();
-    }
-
-    default Value analysed(Property property) {
-        throw new UnsupportedOperationException();
-    }
-
-    default Value analysedOrDefault(Property property, Value defaultValue) {
+    default <V extends Value> V analysedOrDefault(Property property, V defaultValue) {
         assert defaultValue != null;
         throw new UnsupportedOperationException();
     }

@@ -3,8 +3,6 @@ package org.e2immu.cstapi.info;
 import org.e2immu.annotation.Fluent;
 import org.e2immu.cstapi.analysis.Value;
 import org.e2immu.cstapi.element.CompilationUnit;
-import org.e2immu.cstapi.element.Element;
-import org.e2immu.cstapi.element.Source;
 import org.e2immu.cstapi.expression.AnnotationExpression;
 import org.e2immu.cstapi.expression.Expression;
 import org.e2immu.cstapi.statement.Block;
@@ -12,6 +10,7 @@ import org.e2immu.cstapi.type.ParameterizedType;
 import org.e2immu.cstapi.type.TypeParameter;
 import org.e2immu.cstapi.util.ParSeq;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
@@ -19,8 +18,6 @@ public interface MethodInfo extends Info {
     boolean isConstructor();
 
     TypeInfo primaryType();
-
-    boolean methodAnalysisIsSet();
 
     boolean isDefault();
 
@@ -82,30 +79,44 @@ public interface MethodInfo extends Info {
 
     boolean isOverloadOfJLOEquals();
 
-    // from analysis
-    boolean isModifying();
-
     boolean isCompactConstructor();
 
     boolean isSyntheticConstructor();
 
     boolean isStaticBlock();
 
+    // from analysis
+
+    boolean isModifying();
+
     boolean isFluent();
 
-    // related to commutation of parameters
+    boolean isIdentity();
+
+    boolean isStaticSideEffects();
+
+    // related to the commutation of methods
 
     Value.CommutableData commutableData();
 
-    ParSeq<ParameterInfo> getParallelGroups();
+    // related to the commutation of parameters
+
+    Value.ParameterParSeq getParallelGroups();
 
     default boolean hasParallelGroups() {
-        ParSeq<ParameterInfo> parSeq = getParallelGroups();
+        ParSeq<ParameterInfo> parSeq = getParallelGroups().parSeq();
         return parSeq != null && parSeq.containsParallels();
     }
 
-    List<Expression> sortAccordingToParallelGroupsAndNaturalOrder(List<Expression> parameterExpressions);
+    default List<Expression> sortAccordingToParallelGroupsAndNaturalOrder(List<Expression> parameterExpressions) {
+        return getParallelGroups().parSeq().sortParallels(parameterExpressions, Comparator.naturalOrder());
+    }
 
+    // this method acts as a getter or setter for this field
+    Value.FieldValue getSetField();
+
+    // there is another method without these parameters; they can also be set with setters
+    Value.GetSetEquivalent getSetEquivalents();
 
     Builder builder();
 

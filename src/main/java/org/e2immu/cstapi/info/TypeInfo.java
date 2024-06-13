@@ -178,4 +178,6 @@ public interface TypeInfo extends NamedType, Info {
 
         void commit();
     }
+
+    boolean isAtLeastImmutableHC();
 }
