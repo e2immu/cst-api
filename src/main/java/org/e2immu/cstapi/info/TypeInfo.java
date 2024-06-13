@@ -20,8 +20,6 @@ public interface TypeInfo extends NamedType, Info {
 
     String fullyQualifiedName();
 
-    ParameterizedType asSimpleParameterizedType();
-
     // for java, that will be packageName == "java.lang"
     boolean doesNotRequirePackage();
 
