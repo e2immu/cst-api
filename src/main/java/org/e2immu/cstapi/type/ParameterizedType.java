@@ -139,4 +139,8 @@ public interface ParameterizedType {
                                        Map<NamedType, ParameterizedType> translate);
 
     boolean isMathematicallyInteger();
+
+    ParameterizedType withParameters(List<ParameterizedType> parameterizedTypes);
+
+    ParameterizedType withWildcard(Wildcard wildcard);
 }

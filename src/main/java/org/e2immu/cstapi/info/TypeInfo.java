@@ -42,8 +42,6 @@ public interface TypeInfo extends NamedType, Info {
     // from inspection
     Set<TypeInfo> superTypesExcludingJavaLangObject();
 
-    ParameterizedType asParameterizedType(Runtime runtime);
-
     List<TypeParameter> typeParameters();
 
     MethodInfo findUniqueMethod(String methodName, int n);

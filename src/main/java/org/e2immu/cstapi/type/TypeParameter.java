@@ -23,8 +23,6 @@ public interface TypeParameter extends NamedType {
 
     List<ParameterizedType> typeBounds();
 
-    ParameterizedType toParameterizedType();
-
     @NotNull
     OutputBuilder print(Qualification qualification, Set<TypeParameter> visitedTypeParameters);
 
