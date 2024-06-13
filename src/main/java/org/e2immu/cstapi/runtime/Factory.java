@@ -237,13 +237,9 @@ public interface Factory {
 
     TypeInfo newTypeInfo(CompilationUnit cu, String simpleName);
 
-    TypeParameter newTypeParameter(String typeParameterName, int tpCnt, TypeInfo owner);
+    TypeParameter newTypeParameter(int index, String simpleName, MethodInfo owner);
 
-    TypeParameter newTypeParameter(String typeParameterName, int tpCnt, List<ParameterizedType> typeBounds, TypeInfo owner);
-
-    TypeParameter newTypeParameter(String typeParameterName, int tpCnt, MethodInfo owner);
-
-    TypeParameter newTypeParameter(String typeParameterName, int tpCnt, List<ParameterizedType> typeBounds, MethodInfo owner);
+    TypeParameter newTypeParameter(int index, String simpleName, TypeInfo owner);
 
     UnaryOperator newUnaryOperator(MethodInfo operator, Expression e, Precedence precedence);
 

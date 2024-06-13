@@ -1,5 +1,6 @@
 package org.e2immu.cstapi.type;
 
+import org.e2immu.annotation.Fluent;
 import org.e2immu.annotation.NotNull;
 import org.e2immu.cstapi.info.MethodInfo;
 import org.e2immu.cstapi.info.TypeInfo;
@@ -31,4 +32,16 @@ public interface TypeParameter extends NamedType {
         return getOwner().isLeft() ? getOwner().getLeft().primaryType() : getOwner().getRight().primaryType();
     }
 
+    Builder builder();
+
+    interface Builder {
+        @Fluent
+        Builder setTypeBounds(List<ParameterizedType> typeBounds);
+
+        @Fluent
+        Builder addTypeBound(ParameterizedType typeBound);
+
+        // when all type bounds have been set
+        TypeParameter commit();
+    }
 }
