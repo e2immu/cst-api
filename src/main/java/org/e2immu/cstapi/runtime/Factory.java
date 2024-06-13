@@ -81,6 +81,18 @@ public interface Factory {
 
     MethodModifier methodModifierSynchronized();
 
+    MethodInfo.MethodType methodTypeAbstractMethod();
+
+    MethodInfo.MethodType methodTypeConstructor();
+
+    MethodInfo.MethodType methodTypeDefaultMethod();
+
+    MethodInfo.MethodType methodTypeMethod();
+
+    MethodInfo.MethodType methodTypeStaticMethod();
+
+    MethodInfo.MethodType methodTypeSyntheticConstructor();
+
     AnnotationExpression.Builder newAnnotationExpressionBuilder();
 
     ArrayInitializer newArrayInitializer(List<Expression> expressions, ParameterizedType commonType);
@@ -164,7 +176,9 @@ public interface Factory {
 
     LongConstant newLong(long l);
 
-    MethodInfo newMethod(TypeInfo owner);
+    MethodInfo newConstructor(TypeInfo owner);
+
+    MethodInfo newConstructor(TypeInfo owner, MethodInfo.MethodType methodType);
 
     MethodInfo newMethod(TypeInfo owner, String name, MethodInfo.MethodType methodType);
 
@@ -173,16 +187,6 @@ public interface Factory {
     MethodCall.Builder newMethodCallBuilder();
 
     MethodReference newMethodReference(Expression e, MethodInfo methodInfo, ParameterizedType parameterizedType);
-
-    MethodInfo.MethodType newMethodTypeAbstractMethod();
-
-    MethodInfo.MethodType newMethodTypeConstructor();
-
-    MethodInfo.MethodType newMethodTypeDefaultMethod();
-
-    MethodInfo.MethodType newMethodTypeMethod();
-
-    MethodInfo.MethodType newMethodTypeStaticMethod();
 
     Expression newMultiExpressions(List<Expression> newExpressions);
 
