@@ -13,8 +13,7 @@ public interface ParameterInfo extends Variable {
 
     Builder builder();
 
-    interface Builder extends Info.Builder {
-        void commit();
+    interface Builder extends Info.Builder<Builder> {
 
         @Fluent
         Builder setVarArgs(boolean varArgs);

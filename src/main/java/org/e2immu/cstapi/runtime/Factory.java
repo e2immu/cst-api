@@ -81,6 +81,8 @@ public interface Factory {
 
     MethodModifier methodModifierSynchronized();
 
+    AnnotationExpression.Builder newAnnotationExpressionBuilder();
+
     ArrayInitializer newArrayInitializer(List<Expression> expressions, ParameterizedType commonType);
 
     ArrayLength newArrayLength(Expression e);
@@ -174,7 +176,11 @@ public interface Factory {
 
     MethodReference newMethodReference(Expression e, MethodInfo methodInfo, ParameterizedType parameterizedType);
 
+    MethodInfo.MethodType newMethodTypeAbstractMethod();
+
     MethodInfo.MethodType newMethodTypeConstructor();
+
+    MethodInfo.MethodType newMethodTypeDefaultMethod();
 
     MethodInfo.MethodType newMethodTypeMethod();
 
@@ -191,6 +197,8 @@ public interface Factory {
     ParameterizedType newParameterizedType(TypeInfo typeInfo, int arrays);
 
     ParameterizedType newParameterizedType(TypeParameter typeParameter, int index, Wildcard wildCard);
+
+    ParameterizedType newParameterizedType(TypeInfo typeInfo,  int arrays, Wildcard wildCard, List<ParameterizedType> parameters);
 
     Source newParserSource(Element parent, String index, int beginLine, int beginPos, int endLine, int endPos);
 
@@ -251,7 +259,8 @@ public interface Factory {
 
     Expression nullValue(TypeInfo typeInfo);
 
-    ConstructorCall objectCreation(Expression scope, MethodInfo constructor, ParameterizedType parameterizedType, Diamond diamond, List<Expression> parameterExpressions);
+    ConstructorCall objectCreation(Expression scope, MethodInfo constructor, ParameterizedType parameterizedType,
+                                   Diamond diamond, List<Expression> parameterExpressions);
 
     ParameterizedType parameterizedTypeReturnTypeOfConstructor();
 
@@ -300,4 +309,6 @@ public interface Factory {
     TypeNature typeNatureRecord();
 
     Wildcard wildcardExtends();
+
+    Wildcard wildcardSuper();
 }

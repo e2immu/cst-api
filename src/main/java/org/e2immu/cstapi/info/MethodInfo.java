@@ -138,8 +138,6 @@ public interface MethodInfo extends Info {
         @Fluent
         Builder commitParameters();
 
-        void commit();
-
         @Fluent
         Builder setMethodBody(Block block);
 

@@ -12,6 +12,17 @@ public interface Info extends Element {
     interface Builder<B extends Builder<?>> extends Element.Builder<B> {
         @Fluent
         B setAccess(Access access);
+
+        @Fluent
+        B setSynthetic(boolean synthetic);
+
+        boolean hasBeenCommitted();
+
+        // once all the modifiers have been set
+        @Fluent
+        Builder computeAccess();
+
+        void commit();
     }
 
 }

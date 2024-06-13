@@ -51,7 +51,5 @@ public interface FieldInfo extends Info {
 
         @Fluent
         Builder setInitializer(Expression initializer);
-
-        void commit();
     }
 }

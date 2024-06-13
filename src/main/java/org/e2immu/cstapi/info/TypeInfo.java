@@ -176,7 +176,8 @@ public interface TypeInfo extends NamedType, Info {
         @Fluent
         Builder addInterfaceImplemented(ParameterizedType interfaceImplemented);
 
-        void commit();
+        @Fluent
+        Builder addTypeParameter(TypeParameter typeParameter);
     }
 
     boolean isAtLeastImmutableHC();
