@@ -109,9 +109,7 @@ public interface Factory {
 
     CompilationUnit.Builder newCompilationUnitBuilder();
 
-    ConstructorCall newConstructorCall(Expression scope, MethodInfo constructor,
-                                       ParameterizedType pt, Diamond diamond, List<Expression> parameterExpressions,
-                                       TypeInfo anonymousClass, ArrayInitializer arrayInitializer);
+    ConstructorCall.Builder newConstructorCallBuilder();
 
     DependentVariable newDependentVariable(Expression array, Expression index);
 
