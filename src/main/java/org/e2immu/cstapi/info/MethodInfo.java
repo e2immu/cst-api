@@ -17,6 +17,8 @@ import java.util.Set;
 public interface MethodInfo extends Info {
     boolean isConstructor();
 
+    boolean isOverloadOfJLOMethod();
+
     TypeInfo primaryType();
 
     boolean isDefault();

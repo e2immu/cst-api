@@ -85,6 +85,8 @@ public interface ParameterizedType {
 
     boolean isWILDCARD_PARAMETERIZED_TYPE();
 
+    boolean isReturnTypeOfConstructor();
+
     boolean isNumeric();
 
     boolean isUnboundTypeParameter();

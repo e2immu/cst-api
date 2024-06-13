@@ -178,6 +178,9 @@ public interface TypeInfo extends NamedType, Info {
 
         @Fluent
         Builder addTypeParameter(TypeParameter typeParameter);
+
+        @Fluent
+        Builder setSingleAbstractMethod(MethodInfo singleAbstractMethod);
     }
 
     boolean isAtLeastImmutableHC();
