@@ -1,9 +1,6 @@
 package org.e2immu.cstapi.runtime;
 
-import org.e2immu.cstapi.element.Comment;
-import org.e2immu.cstapi.element.CompilationUnit;
-import org.e2immu.cstapi.element.Element;
-import org.e2immu.cstapi.element.Source;
+import org.e2immu.cstapi.element.*;
 import org.e2immu.cstapi.expression.*;
 import org.e2immu.cstapi.info.*;
 import org.e2immu.cstapi.statement.*;
@@ -155,6 +152,8 @@ public interface Factory {
 
     IfElseStatement.Builder newIfElseBuilder();
 
+    ImportStatement newImportStatement(String importString);
+
     InlineConditional newInlineConditional(Expression condition, Expression ifTrue, Expression ifFalse);
 
     Instance newInstanceForTooComplex(ParameterizedType parameterizedType);
@@ -187,6 +186,8 @@ public interface Factory {
     MethodCall.Builder newMethodCallBuilder();
 
     MethodReference newMethodReference(Expression e, MethodInfo methodInfo, ParameterizedType parameterizedType);
+
+    MethodReference.Builder newMethodReferenceBuilder();
 
     Expression newMultiExpressions(List<Expression> newExpressions);
 

@@ -18,6 +18,7 @@ import java.util.stream.Stream;
 
 public interface TypeInfo extends NamedType, Info {
 
+
     String fullyQualifiedName();
 
     // for java, that will be packageName == "java.lang"
@@ -47,6 +48,8 @@ public interface TypeInfo extends NamedType, Info {
     MethodInfo findUniqueMethod(String methodName, int n);
 
     MethodInfo findConstructor(int i);
+
+    TypeInfo findSubType(String simpleName);
 
     FieldInfo getFieldByName(String name, boolean complain);
 
