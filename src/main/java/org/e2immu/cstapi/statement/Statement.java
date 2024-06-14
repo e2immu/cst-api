@@ -45,4 +45,9 @@ public interface Statement extends Element {
     default List<Statement> translate(TranslationMap translationMap) {
         return List.of(this);
     }
+
+    // from analysis
+    default boolean alwaysEscapes() {
+        return false;
+    }
 }

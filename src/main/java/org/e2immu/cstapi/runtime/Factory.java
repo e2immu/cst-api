@@ -96,6 +96,8 @@ public interface Factory {
 
     TypeInfo newAnonymousType(TypeInfo enclosingType, int index);
 
+    MethodInfo newArrayCreationConstructor(ParameterizedType returnType);
+
     ArrayInitializer newArrayInitializer(List<Expression> expressions, ParameterizedType commonType);
 
     ArrayLength newArrayLength(Expression e);
@@ -119,6 +121,8 @@ public interface Factory {
     TryStatement.CatchClause.Builder newCatchClauseBuilder();
 
     CharConstant newChar(char c);
+
+    CommaExpression.Builder newCommaBuilder();
 
     CompilationUnit.Builder newCompilationUnitBuilder();
 
@@ -311,4 +315,5 @@ public interface Factory {
     Wildcard wildcardExtends();
 
     Wildcard wildcardSuper();
+
 }

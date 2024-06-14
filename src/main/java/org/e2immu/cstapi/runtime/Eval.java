@@ -72,6 +72,12 @@ public interface Eval {
     int limitOnComplexity();
 
     Stream<Expression> expandTerms(Expression expression, boolean negate);
+    
+    Stream<Expression> expandFactors(Expression expression);
 
     Expression less(Expression lhs, Expression rhs, boolean allowEquals);
+
+    Expression wrapInProduct(Expression[] translated, int length);
+
+    Expression wrapInSum(Expression[] translated, int length);
 }
