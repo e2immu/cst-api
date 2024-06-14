@@ -13,6 +13,8 @@ public interface Types {
         return getFullyQualified(clazz.getCanonicalName(), complain);
     }
 
+    TypeInfo syntheticFunctionalType(int inputParameters, boolean hasReturnValue);
+
     // separate from getFullyQualified, as these have been preloaded
 
     AnnotationExpression e2immuAnnotation(String fullyQualifiedName);

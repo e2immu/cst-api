@@ -62,6 +62,8 @@ public interface Factory {
 
     IntConstant intZero();
 
+    Lambda.OutputVariant lambdaOutputVariantEmpty();
+
     MethodModifier methodModifierAbstract();
 
     MethodModifier methodModifierDefault();
@@ -92,6 +94,8 @@ public interface Factory {
 
     AnnotationExpression.Builder newAnnotationExpressionBuilder();
 
+    TypeInfo newAnonymousType(TypeInfo enclosingType, int index);
+
     ArrayInitializer newArrayInitializer(List<Expression> expressions, ParameterizedType commonType);
 
     ArrayLength newArrayLength(Expression e);
@@ -117,6 +121,10 @@ public interface Factory {
     CharConstant newChar(char c);
 
     CompilationUnit.Builder newCompilationUnitBuilder();
+
+    MethodInfo newConstructor(TypeInfo owner);
+
+    MethodInfo newConstructor(TypeInfo owner, MethodInfo.MethodType methodType);
 
     ConstructorCall.Builder newConstructorCallBuilder();
 
@@ -162,10 +170,7 @@ public interface Factory {
 
     IntConstant newInt(int i);
 
-    Lambda newLambda(ParameterizedType abstractFunctionalType,
-                     ParameterizedType implementation,
-                     ParameterizedType concreteReturnType,
-                     List<Lambda.OutputVariant> outputVariants);
+    Lambda.Builder newLambdaBuilder();
 
     LocalVariable newLocalVariable(String name, ParameterizedType parameterizedType);
 
@@ -174,10 +179,6 @@ public interface Factory {
     LocalVariableCreation newLocalVariableCreation(LocalVariable lvc);
 
     LongConstant newLong(long l);
-
-    MethodInfo newConstructor(TypeInfo owner);
-
-    MethodInfo newConstructor(TypeInfo owner, MethodInfo.MethodType methodType);
 
     MethodInfo newMethod(TypeInfo owner, String name, MethodInfo.MethodType methodType);
 
