@@ -63,8 +63,6 @@ public interface MethodInfo extends Info {
 
     List<TypeParameter> typeParameters();
 
-    List<AnnotationExpression> annotations();
-
     Block methodBody();
 
     // from resolution

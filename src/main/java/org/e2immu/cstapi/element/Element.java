@@ -99,6 +99,9 @@ public interface Element {
     @NotNull
     Stream<TypeReference> typesReferenced();
 
+    default List<AnnotationExpression> annotations() {
+        return List.of();
+    }
 
     interface Builder<B extends Builder<?>> {
         @Fluent

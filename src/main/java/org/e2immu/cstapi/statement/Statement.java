@@ -12,9 +12,6 @@ import java.util.stream.Stream;
 
 public interface Statement extends Element {
 
-    @NotNull
-    List<AnnotationExpression> annotations();
-
     // a label to possibly jump to
     String label();
 
