@@ -118,6 +118,9 @@ public interface MethodInfo extends Info {
     // there is another method without these parameters; they can also be set with setters
     Value.GetSetEquivalent getSetEquivalents();
 
+    Value.PostConditions postConditions();
+    Value.Precondition precondition();
+
     Builder builder();
 
     boolean isPropertyNotNull();

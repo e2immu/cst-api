@@ -3,12 +3,15 @@ package org.e2immu.cstapi.runtime;
 import org.e2immu.cstapi.element.*;
 import org.e2immu.cstapi.expression.*;
 import org.e2immu.cstapi.info.*;
+import org.e2immu.cstapi.output.OutputBuilder;
+import org.e2immu.cstapi.output.OutputElement;
 import org.e2immu.cstapi.statement.*;
 import org.e2immu.cstapi.translate.TranslationMap;
 import org.e2immu.cstapi.type.*;
 import org.e2immu.cstapi.variable.*;
 
 import java.util.List;
+import java.util.stream.Collector;
 
 public interface Factory {
 
@@ -200,13 +203,15 @@ public interface Factory {
 
     ConstructorCall newObjectCreation(Expression scope, MethodInfo constructor, ParameterizedType parameterizedType, Diamond diamond, List<Expression> newParams);
 
+    OutputBuilder newOutputBuilder();
+
     ParameterizedType newParameterizedType(TypeInfo typeInfo, List<ParameterizedType> newParameters);
 
     ParameterizedType newParameterizedType(TypeInfo typeInfo, int arrays);
 
     ParameterizedType newParameterizedType(TypeParameter typeParameter, int index, Wildcard wildCard);
 
-    ParameterizedType newParameterizedType(TypeInfo typeInfo,  int arrays, Wildcard wildCard, List<ParameterizedType> parameters);
+    ParameterizedType newParameterizedType(TypeInfo typeInfo, int arrays, Wildcard wildCard, List<ParameterizedType> parameters);
 
     Source newParserSource(Element parent, String index, int beginLine, int beginPos, int endLine, int endPos);
 
@@ -228,6 +233,8 @@ public interface Factory {
                                          List<Expression> expressions);
 
     SynchronizedStatement.Builder newSynchronizedBuilder();
+
+    OutputElement newText(String text);
 
     This newThis(TypeInfo typeInfo);
 
@@ -266,6 +273,8 @@ public interface Factory {
     ConstructorCall objectCreation(Expression scope, MethodInfo constructor, ParameterizedType parameterizedType,
                                    Diamond diamond, List<Expression> parameterExpressions);
 
+    Collector<OutputBuilder, OutputBuilder, OutputBuilder> outputBuilderJoining(OutputElement outputElement);
+
     ParameterizedType parameterizedTypeReturnTypeOfConstructor();
 
     ParameterizedType parameterizedTypeWildcard();
@@ -273,6 +282,8 @@ public interface Factory {
     Precedence precedenceAdditive();
 
     Precedence precedenceAnd();
+
+    Precedence precedenceArrayAccess();
 
     Precedence precedenceAssignment();
 
@@ -285,6 +296,12 @@ public interface Factory {
     Precedence precedenceOr();
 
     Precedence precedenceUnary();
+
+    OutputElement symbolComma();
+
+    OutputElement symbolLeftParenthesis();
+
+    OutputElement symbolRightParenthesis();
 
     TypeModifier typeModifierAbstract();
 

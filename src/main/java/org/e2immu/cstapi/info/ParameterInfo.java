@@ -1,6 +1,7 @@
 package org.e2immu.cstapi.info;
 
 import org.e2immu.annotation.Fluent;
+import org.e2immu.cstapi.analysis.Value;
 import org.e2immu.cstapi.element.Element;
 import org.e2immu.cstapi.variable.Variable;
 
@@ -24,4 +25,6 @@ public interface ParameterInfo extends Variable {
     boolean isModified();
 
     boolean isIgnoreModifications();
+
+    Value.AssignedToField assignedToField();
 }

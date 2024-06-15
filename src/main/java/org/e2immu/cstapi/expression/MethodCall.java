@@ -21,6 +21,9 @@ public interface MethodCall extends Expression, OneVariable {
 
     ParameterizedType concreteReturnType();
 
+    // make a copy, with different parameters
+    MethodCall withParameterExpressions(List<Expression> parameterExpressions);
+
     interface Builder extends Element.Builder<Builder> {
         MethodCall build();
 

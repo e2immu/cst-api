@@ -8,6 +8,7 @@ import org.e2immu.cstapi.type.ParameterizedType;
 import java.util.Set;
 
 public interface FieldInfo extends Info {
+
     String name();
 
     TypeInfo owner();
@@ -33,6 +34,8 @@ public interface FieldInfo extends Info {
 
     // as opposed to isFinal, which is the modifier
     boolean isPropertyFinal();
+
+    boolean isIgnoreModifications();
 
     default CompilationUnit compilationUnit() {
         return owner().compilationUnit();
