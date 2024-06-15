@@ -18,6 +18,8 @@ public interface Assignment extends Expression {
 
     MethodInfo binaryOperator();
 
+    Assignment withValue(Expression ve);
+
     interface Builder extends Element.Builder<Assignment.Builder> {
         @Fluent
         Builder setTarget(Expression target);

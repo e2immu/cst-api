@@ -124,4 +124,12 @@ public interface Element {
         assert defaultValue != null;
         throw new UnsupportedOperationException();
     }
+
+    default boolean haveAnalyzedValueFor(Property property) {
+        throw new UnsupportedOperationException();
+    }
+
+    default <V extends Value> void setAnalyzed(Property property, V value) {
+        throw new UnsupportedOperationException();
+    }
 }

@@ -122,6 +122,8 @@ public interface Factory {
 
     Cast newCast(Expression e, ParameterizedType parameterizedType);
 
+    Cast.Builder newCastBuilder();
+
     TryStatement.CatchClause.Builder newCatchClauseBuilder();
 
     CharConstant newChar(char c);
