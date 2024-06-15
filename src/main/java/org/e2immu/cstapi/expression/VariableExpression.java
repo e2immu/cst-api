@@ -22,13 +22,13 @@ public interface VariableExpression extends Expression {
     }
 
     interface VariableField extends Suffix {
-        Source latestAssignment();
-
         int statementTime();
+
+        String latestAssignment();
     }
 
     interface ModifiedVariable extends Suffix {
-        Source latestModification();
+        String latestModification();
     }
 
     interface Builder extends Element.Builder<Builder> {

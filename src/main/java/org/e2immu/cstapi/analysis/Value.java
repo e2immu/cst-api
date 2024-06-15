@@ -75,4 +75,8 @@ public interface Value {
     interface AssignedToField extends Value {
         Set<FieldInfo> fields();
     }
+
+    interface  IndicesOfEscapes extends Value {
+        Set<String> indices();
+    }
 }

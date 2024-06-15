@@ -5,6 +5,7 @@ import org.e2immu.cstapi.expression.*;
 import org.e2immu.cstapi.info.*;
 import org.e2immu.cstapi.output.OutputBuilder;
 import org.e2immu.cstapi.output.OutputElement;
+import org.e2immu.cstapi.output.Qualification;
 import org.e2immu.cstapi.statement.*;
 import org.e2immu.cstapi.translate.TranslationMap;
 import org.e2immu.cstapi.type.*;
@@ -193,6 +194,8 @@ public interface Factory {
 
     MethodCall.Builder newMethodCallBuilder();
 
+    MethodCall.Builder newMethodCallBuilder(MethodCall methodCall);
+
     MethodReference newMethodReference(Expression e, MethodInfo methodInfo, ParameterizedType parameterizedType);
 
     MethodReference.Builder newMethodReferenceBuilder();
@@ -262,6 +265,8 @@ public interface Factory {
 
     VariableExpression.Builder newVariableExpressionBuilder();
 
+    VariableExpression.Suffix newVariableFieldSuffix(int statementTime, String latestAssignment);
+
     WhileStatement.Builder newWhileBuilder();
 
     YieldStatement.Builder newYieldBuilder();
@@ -296,6 +301,10 @@ public interface Factory {
     Precedence precedenceOr();
 
     Precedence precedenceUnary();
+
+    Qualification qualificationFullyQualifiedNames();
+
+    OutputElement symbolColon();
 
     OutputElement symbolComma();
 

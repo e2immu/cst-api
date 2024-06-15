@@ -1,6 +1,7 @@
 package org.e2immu.cstapi.info;
 
 import org.e2immu.annotation.Fluent;
+import org.e2immu.annotation.NotNull;
 import org.e2immu.cstapi.analysis.Value;
 import org.e2immu.cstapi.element.CompilationUnit;
 import org.e2immu.cstapi.expression.AnnotationExpression;
@@ -10,11 +11,13 @@ import org.e2immu.cstapi.type.ParameterizedType;
 import org.e2immu.cstapi.type.TypeParameter;
 import org.e2immu.cstapi.util.ParSeq;
 
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
 public interface MethodInfo extends Info {
+
     boolean isConstructor();
 
     boolean isOverloadOfJLOMethod();
@@ -71,6 +74,8 @@ public interface MethodInfo extends Info {
 
     Set<MethodInfo> overrides();
 
+    boolean allowsInterrupts();
+
     // with inspection
 
     boolean isPublic();
@@ -119,7 +124,14 @@ public interface MethodInfo extends Info {
     Value.GetSetEquivalent getSetEquivalents();
 
     Value.PostConditions postConditions();
+
     Value.Precondition precondition();
+
+    /*
+       Many throw and assert statements find their way into a pre- or post-condition.
+       Some, however, do not. We register them here.
+     */
+    Value.IndicesOfEscapes indicesOfEscapesNotInPreOrPostConditions();
 
     Builder builder();
 
