@@ -152,7 +152,7 @@ public interface TranslationMap {
 
         Builder setExpandDelayedWrapperExpressions(boolean expandDelayedWrappedExpressions);
 
-        Builder translateMethod(MethodInfo methodInfo);
+        boolean translateMethod(MethodInfo methodInfo);
 
         boolean isEmpty();
     }
