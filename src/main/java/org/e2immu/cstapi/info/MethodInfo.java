@@ -22,6 +22,8 @@ public interface MethodInfo extends Info {
 
     boolean isOverloadOfJLOMethod();
 
+    boolean isSynchronized();
+
     TypeInfo primaryType();
 
     boolean isDefault();

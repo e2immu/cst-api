@@ -118,6 +118,8 @@ public interface Factory {
 
     BooleanConstant newBoolean(boolean value);
 
+    BreakStatement.Builder newBreakBuilder();
+
     ByteConstant newByte(byte b);
 
     Cast newCast(Expression e, ParameterizedType parameterizedType);
@@ -137,6 +139,8 @@ public interface Factory {
     MethodInfo newConstructor(TypeInfo owner, MethodInfo.MethodType methodType);
 
     ConstructorCall.Builder newConstructorCallBuilder();
+
+    ContinueStatement.Builder newContinueBuilder();
 
     DependentVariable newDependentVariable(Expression array, Expression index);
 
@@ -166,6 +170,8 @@ public interface Factory {
 
     FloatConstant newFloat(float f);
 
+    ForStatement.Builder newForBuilder();
+
     ForEachStatement.Builder newForEachBuilder();
 
     GreaterThanZero newGreaterThanZero(Expression e, boolean allowEquals);
@@ -191,6 +197,8 @@ public interface Factory {
     LocalVariable newLocalVariable(String name, ParameterizedType parameterizedType, Expression assignmentExpression);
 
     LocalVariableCreation newLocalVariableCreation(LocalVariable lvc);
+
+    LocalVariableCreation.Builder newLocalVariableCreationBuilder();
 
     LongConstant newLong(long l);
 
@@ -347,4 +355,5 @@ public interface Factory {
     Wildcard wildcardExtends();
 
     Wildcard wildcardSuper();
+
 }
