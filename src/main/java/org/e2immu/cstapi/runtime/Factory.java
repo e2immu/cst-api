@@ -152,6 +152,8 @@ public interface Factory {
 
     Equals newEquals(Expression lhs, Expression rhs);
 
+    ExplicitConstructorInvocation.Builder newExplicitConstructorInvocationBuilder();
+
     ExpressionAsStatement newExpressionAsStatement(Expression standardized);
 
     ExpressionAsStatement.Builder newExpressionAsStatementBuilder();
@@ -173,6 +175,8 @@ public interface Factory {
     ImportStatement newImportStatement(String importString);
 
     InlineConditional newInlineConditional(Expression condition, Expression ifTrue, Expression ifFalse);
+
+    InlineConditional.Builder newInlineConditionalBuilder();
 
     Instance newInstanceForTooComplex(ParameterizedType parameterizedType);
 
@@ -343,5 +347,4 @@ public interface Factory {
     Wildcard wildcardExtends();
 
     Wildcard wildcardSuper();
-
 }
