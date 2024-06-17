@@ -6,11 +6,12 @@ import org.e2immu.cstapi.info.MethodInfo;
 import org.e2immu.cstapi.info.ParameterInfo;
 import org.e2immu.cstapi.util.ParSeq;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public interface Value {
+    Codec.EncodedValue encode(Codec codec);
+
     interface Bool extends Value {
         boolean isTrue();
 
@@ -80,7 +81,7 @@ public interface Value {
         Set<FieldInfo> fields();
     }
 
-    interface  IndicesOfEscapes extends Value {
+    interface IndicesOfEscapes extends Value {
         Set<String> indices();
     }
 }

@@ -4,7 +4,9 @@ import org.e2immu.annotation.Fluent;
 import org.e2immu.annotation.ImmutableContainer;
 import org.e2immu.annotation.NotNull;
 import org.e2immu.annotation.rare.IgnoreModifications;
+
 import org.e2immu.cstapi.analysis.Property;
+import org.e2immu.cstapi.analysis.PropertyValueMap;
 import org.e2immu.cstapi.analysis.Value;
 import org.e2immu.cstapi.expression.AnnotationExpression;
 import org.e2immu.cstapi.info.TypeInfo;
@@ -14,9 +16,7 @@ import org.e2immu.cstapi.variable.DescendMode;
 import org.e2immu.cstapi.variable.Variable;
 
 import java.util.List;
-import java.util.Set;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -120,16 +120,8 @@ public interface Element {
         B addAnnotations(List<AnnotationExpression> annotations);
     }
 
-    default <V extends Value> V analysedOrDefault(Property property, V defaultValue) {
-        assert defaultValue != null;
+    default PropertyValueMap analysis() {
         throw new UnsupportedOperationException();
     }
 
-    default boolean haveAnalyzedValueFor(Property property) {
-        throw new UnsupportedOperationException();
-    }
-
-    default <V extends Value> void setAnalyzed(Property property, V value) {
-        throw new UnsupportedOperationException();
-    }
 }
