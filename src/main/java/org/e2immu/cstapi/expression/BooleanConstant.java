@@ -16,6 +16,6 @@ public interface BooleanConstant extends ConstantExpression<Boolean> {
 
     @Override
     default boolean isBoolValueTrue() {
-        return !constant();
+        return constant();
     }
 }
