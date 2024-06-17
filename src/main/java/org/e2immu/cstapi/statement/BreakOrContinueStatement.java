@@ -1,5 +1,5 @@
 package org.e2immu.cstapi.statement;
 
-public interface BreakOrContinueStatement {
+public interface BreakOrContinueStatement extends Statement {
     String goToLabel();
 }
