@@ -57,7 +57,5 @@ public interface Expression extends Comparable<Expression>, Element {
         return null;
     }
 
-    default Expression translate(TranslationMap translationMap) {
-        return this;
-    }
+    Expression translate(TranslationMap translationMap);
 }

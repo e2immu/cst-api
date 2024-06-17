@@ -3,6 +3,7 @@ package org.e2immu.cstapi.translate;
 import org.e2immu.annotation.Fluent;
 import org.e2immu.annotation.NotNull;
 import org.e2immu.cstapi.expression.Expression;
+import org.e2immu.cstapi.expression.MethodCall;
 import org.e2immu.cstapi.info.MethodInfo;
 import org.e2immu.cstapi.runtime.Runtime;
 import org.e2immu.cstapi.statement.Statement;
@@ -103,6 +104,10 @@ public interface TranslationMap {
         return false;
     }
 
+    interface ModificationTimesHandler {
+        String modificationTimes(MethodCall beforeTranslation,
+                                 Expression translatedObject, List<Expression> translatedParameters);
+    }
     /*
     Note: to avoid cyclic type dependencies, the first parameter takes 'Expression' rather than 'MethodCall'
      */
@@ -153,6 +158,8 @@ public interface TranslationMap {
         Builder setExpandDelayedWrapperExpressions(boolean expandDelayedWrappedExpressions);
 
         boolean translateMethod(MethodInfo methodInfo);
+
+        Builder setModificationTimesHandler(ModificationTimesHandler modificationTimesHandler);
 
         boolean isEmpty();
     }

@@ -20,5 +20,7 @@ public interface FieldReference extends Variable {
 
     boolean scopeIsRecursivelyThis();
 
+    boolean isDefaultScope();
+
     boolean scopeIsThis();
 }
