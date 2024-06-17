@@ -1,5 +1,6 @@
 package org.e2immu.cstapi.analysis;
 
+import org.e2immu.cstapi.element.Element;
 import org.e2immu.cstapi.expression.Expression;
 import org.e2immu.cstapi.info.FieldInfo;
 import org.e2immu.cstapi.info.Info;
@@ -16,7 +17,7 @@ import java.util.stream.Stream;
 support for reading and writing the property-value pairs in many elements.
  */
 public interface Codec {
-    
+
     boolean decodeBoolean(EncodedValue encodedValue);
 
     Expression decodeExpression(EncodedValue value);
@@ -58,13 +59,21 @@ public interface Codec {
     record EncodedPropertyValue(String key, EncodedValue encodedValue) {
     }
 
+    record PropertyValue(Property property, Value value) {
+    }
+
+    default EncodedPropertyValue encode(Property property, Value value) {
+        EncodedValue encodedValue = value.encode(this);
+        return new EncodedPropertyValue(property.key(), encodedValue);
+    }
+
     // Info level
-
-    Stream<EncodedPropertyValue> load(Info info);
-
-    void store(Info info, Stream<EncodedPropertyValue> encodedPropertyValueStream);
 
     interface EncodedValue {
     }
+
+    Stream<PropertyValue> decode(PropertyValueMap pvm, Stream<EncodedPropertyValue> encodedPropertyValueStream);
+
+    EncodedValue encode(Element info, Stream<EncodedPropertyValue> encodedPropertyValueStream);
 }
 

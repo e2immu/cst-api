@@ -5,5 +5,7 @@ import java.util.stream.Stream;
 public interface Property {
     Class<? extends Value> classOfValue();
 
+    Value defaultValue();
+
     String key();
 }
