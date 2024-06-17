@@ -11,10 +11,7 @@ import org.e2immu.cstapi.type.ParameterizedType;
 import org.e2immu.cstapi.type.TypeParameter;
 import org.e2immu.cstapi.util.ParSeq;
 
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public interface MethodInfo extends Info {
 
@@ -101,6 +98,8 @@ public interface MethodInfo extends Info {
     boolean isIdentity();
 
     boolean isStaticSideEffects();
+
+    Map<FieldInfo, Boolean> areOwnFieldsReadModified();
 
     // related to the commutation of methods
 

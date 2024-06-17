@@ -50,6 +50,10 @@ public interface Value {
         FieldInfo field();
     }
 
+    interface FieldBooleanMap extends Value {
+        Map<FieldInfo, Boolean> map();
+    }
+
     // meant for the "GetSetEquivalent" property
     interface GetSetEquivalent extends Value {
         Set<ParameterInfo> parameters();
